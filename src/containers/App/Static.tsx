@@ -1,19 +1,21 @@
 import * as React from 'react';
-import { RouteComponent, RouteEntry, getRoute } from 'modules/routing';
 import StaticHome from './Static/StaticHome';
 import StaticHeader from './Static/StaticHeader';
+import { RCP } from 'modules/routing';
+import { Switch, Route } from 'react-router';
+import NotFound from 'components/NotFound';
 
-class Static extends RouteComponent {
-  private routes: RouteEntry[] = [
-    { component: StaticHome, path: '', exact: true },
-  ]
-
+class Static extends React.Component {
   public render() {
-    const path = this.props.path ? this.props.path : '';
+    const { match } = this.props as RCP;
+
     return (
       <div className="Static">
-        <StaticHeader {...this.props} />
-        {getRoute(path, this.routes)}
+        <StaticHeader root={match.url} />
+        <Switch>
+          <Route exact={true} path={match.url} component={StaticHome} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     );
   }

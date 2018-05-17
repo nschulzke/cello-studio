@@ -4,22 +4,23 @@ import AdminHome from './Admin/AdminHome';
 import AdminEmails from './Admin/AdminEmails';
 import AdminScheduling from './Admin/AdminScheduling';
 import AdminStudents from './Admin/AdminStudents';
-import { getRoute, RouteEntry, RouteComponent } from 'modules/routing';
+import { RCP } from 'modules/routing';
+import { Route, Switch } from 'react-router';
+import NotFound from 'components/NotFound';
 
-class Admin extends RouteComponent {
-  private routes: RouteEntry[] = [
-    { component: AdminHome, path: '', exact: true },
-    { component: AdminEmails, path: '/emails' },
-    { component: AdminScheduling, path: '/scheduling' },
-    { component: AdminStudents, path: '/students' },
-  ]
-
+class Admin extends React.Component {
   public render() {
-    const path = this.props.path ? this.props.path : '';
+    const { match } = this.props as RCP;
     return (
       <div className="Student">
-        <AdminHeader {...this.props} />
-        {getRoute(path, this.routes)}
+        <AdminHeader root={match.url} />
+        <Switch>
+          <Route exact={true} path={match.url} component={AdminHome} />
+          <Route path={`${match.path}/emails`} component={AdminEmails} />
+          <Route path={`${match.path}/scheduling`} component={AdminScheduling} />
+          <Route path={`${match.path}/students`} component={AdminStudents} />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     );
   }

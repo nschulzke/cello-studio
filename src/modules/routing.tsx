@@ -1,5 +1,6 @@
 import * as React from 'react'
 import NotFound from 'components/NotFound';
+import { StaticContext, RouteComponentProps } from 'react-router';
 
 function nestRoute(root: string, path: string): NestedRoute {
   const newPath = path.replace(new RegExp('^' + root), '');
@@ -8,6 +9,8 @@ function nestRoute(root: string, path: string): NestedRoute {
     path: newPath
   }
 }
+
+export type RCP = RouteComponentProps<any, StaticContext>;
 
 export interface NestedRoute {
   root?: string
