@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class AdminHome extends React.Component {
+class AdminHome extends RouteComponent {
   public render() {
     return (
       <div className="AdminHome">

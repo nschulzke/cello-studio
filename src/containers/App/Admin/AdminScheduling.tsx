@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class Scheduling extends React.Component {
+class AdminScheduling extends RouteComponent {
   public render() {
     return (
       <div className="Scheduling">
@@ -10,4 +11,4 @@ class Scheduling extends React.Component {
   }
 }
 
-export default Scheduling;
+export default AdminScheduling;

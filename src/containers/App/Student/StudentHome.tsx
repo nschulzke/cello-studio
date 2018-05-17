@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class StudentHome extends React.Component {
+class StudentHome extends RouteComponent {
   public render() {
     return (
       <div className="StudentHome">

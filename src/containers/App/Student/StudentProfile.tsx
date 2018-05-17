@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class Profile extends React.Component {
+class StudentProfile extends RouteComponent {
   public render() {
     return (
       <div className="Profile">
@@ -10,4 +11,4 @@ class Profile extends React.Component {
   }
 }
 
-export default Profile;
+export default StudentProfile;

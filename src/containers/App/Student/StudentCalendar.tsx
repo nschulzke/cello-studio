@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class Calendar extends React.Component {
+class StudentCalendar extends RouteComponent {
   public render() {
     return (
       <div className="Calendar">
@@ -10,4 +11,4 @@ class Calendar extends React.Component {
   }
 }
 
-export default Calendar;
+export default StudentCalendar;

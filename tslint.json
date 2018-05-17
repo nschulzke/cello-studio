@@ -9,5 +9,19 @@
       "config/**/*.js",
       "node_modules/**/*.ts"
     ]
+  },
+  "rules": {
+    "ordered-imports": false,
+    "interface-name": [
+      true,
+      "never-prefix"
+    ],
+    "no-console": {
+      "severity": "warning"
+    },
+    "object-literal-sort-keys": [
+      true,
+      "match-declaration-order"
+    ]
   }
 }

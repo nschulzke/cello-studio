@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class Emails extends React.Component {
+class AdminEmails extends RouteComponent {
   public render() {
     return (
       <div className="Emails">
@@ -10,4 +11,4 @@ class Emails extends React.Component {
   }
 }
 
-export default Emails;
+export default AdminEmails;

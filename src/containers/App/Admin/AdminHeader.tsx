@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
+import { RouteComponent } from 'modules/routing';
 
-class AdminHeader extends React.Component {
+class AdminHeader extends RouteComponent {
   public render() {
     return (
       <header className="AdminHeader">

@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class Files extends React.Component {
+class StudentFiles extends RouteComponent {
   public render() {
     return (
       <div className="Files">
@@ -10,4 +11,4 @@ class Files extends React.Component {
   }
 }
 
-export default Files;
+export default StudentFiles;

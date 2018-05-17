@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { RouteComponent } from 'modules/routing';
 
-class Students extends React.Component {
+class AdminStudents extends RouteComponent {
   public render() {
     return (
       <div className="Students">
@@ -10,4 +11,4 @@ class Students extends React.Component {
   }
 }
 
-export default Students;
+export default AdminStudents;
