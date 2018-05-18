@@ -1,6 +1,7 @@
-import { LogInAction, ActionType, LogOutAction } from "./actions";
+import { LogInAction, ActionType, LogOutAction, AllActions } from "./actions";
 import { Index } from "modules/helpers";
 import { combineReducers, Reducer } from "redux";
+import { Session } from "./state";
 
 export function createReducer<T>(initialState: T, handlers: Index<Reducer<T>>): Reducer<T> {
   return function reducer(state = initialState, action) {
@@ -15,13 +16,15 @@ export function createReducer<T>(initialState: T, handlers: Index<Reducer<T>>): 
 // ********
 // Reducers
 // ********
-export const loggedIn = createReducer(false, {
-  [ActionType.LOG_IN]: (state, action: LogInAction) => {
-    return true;
-  },
-  [ActionType.LOG_OUT]: (state, action: LogOutAction) => {
-    return false;
+export const session: Reducer<Session, AllActions> = (state = { loggedIn: false }, action) => {
+  switch (action.type) {
+    case ActionType.LOG_IN:
+      return { loggedIn: true, permissions: action.permissions };
+    case ActionType.LOG_OUT:
+      return { loggedIn: false };
+    default:
+      return state;
   }
-});
+}
 
-export default combineReducers({ loggedIn });
+export default combineReducers({ session });

@@ -1,20 +1,25 @@
 import * as reducers from './reducers';
 import { ActionType } from './actions';
+import { Permissions } from './state';
 
 describe('reducers', () => {
   it('should have an initial state', () => {
-    expect(reducers.loggedIn(undefined, {
+    expect(reducers.session(undefined, {
       type: ActionType.UNKNOWN,
-    })).toEqual(false);
+    })).toEqual({ loggedIn: false });
   })
   it('should log in user', () => {
-    expect(reducers.loggedIn(false, {
+    expect(reducers.session({ loggedIn: false }, {
       type: ActionType.LOG_IN,
-    })).toEqual(true);
+      permissions: Permissions.ADMIN
+    })).toEqual({
+      loggedIn: true,
+      permissions: Permissions.ADMIN
+    });
   });
   it('should log out user', () => {
-    expect(reducers.loggedIn(true, {
+    expect(reducers.session({ loggedIn: true, permissions: Permissions.ADMIN }, {
       type: ActionType.LOG_OUT,
-    })).toEqual(false);
+    })).toEqual({ loggedIn: false });
   });
 });
