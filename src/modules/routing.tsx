@@ -10,23 +10,23 @@ function nestRoute(root: string, path: string): NestedRoute {
   }
 }
 
-export type RCP = RouteComponentProps<any, StaticContext>;
+type RCP = RouteComponentProps<any, StaticContext>;
 
-export interface NestedRoute {
+interface NestedRoute {
   root?: string
   path?: string
 }
 
-export class RouteComponent extends React.Component<NestedRoute> {
+class RouteComponent extends React.Component<NestedRoute> {
 }
 
-export interface RouteEntry {
+interface RouteEntry {
   component: React.ComponentClass<NestedRoute> | React.SFC<NestedRoute>
   path: string
   exact?: boolean
 }
 
-export function getRoute(path: string, entries: RouteEntry[], defaultEl: JSX.Element = <NotFound />): JSX.Element {
+function getRoute(path: string, entries: RouteEntry[], defaultEl: JSX.Element = <NotFound />): JSX.Element {
   let component = defaultEl
   entries.forEach((entry) => {
     const pattern = '^' + entry.path + '\\/?';
@@ -41,3 +41,5 @@ export function getRoute(path: string, entries: RouteEntry[], defaultEl: JSX.Ele
   });
   return component;
 }
+
+export { RCP, RouteComponent, NestedRoute, getRoute };

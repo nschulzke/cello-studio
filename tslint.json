@@ -22,6 +22,8 @@
     "object-literal-sort-keys": [
       true,
       "match-declaration-order"
-    ]
-  }
+    ],
+    "max-classes-per-file": false,
+    "no-namespace": false,
+  },
 }
