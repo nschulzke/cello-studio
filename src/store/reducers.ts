@@ -1,4 +1,4 @@
-import { LogInAction, ActionType, LogOutAction, AllActions } from "./actions";
+import { ActionType, AllActions } from "./actions";
 import { Index } from "modules/helpers";
 import { combineReducers, Reducer } from "redux";
 import { Session } from "./state";
