@@ -33,6 +33,12 @@ class InlineEdit extends React.Component<Props, State> {
     this.setState({ value: event.currentTarget.value });
   }
 
+  public handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      this.toggleEdit();
+    }
+  }
+
   public getValueText = () => {
     if (this.state.editing) {
       return this.state.value;
@@ -47,7 +53,7 @@ class InlineEdit extends React.Component<Props, State> {
     return (
       <div className="InlineEdit">
         <EditLabel onClick={this.toggleEdit} onCancel={this.cancel} editing={this.state.editing}>{this.props.children}</EditLabel>
-        <input value={this.getValueText()} disabled={!this.state.editing} onChange={this.handleChange} />
+        <input value={this.getValueText()} disabled={!this.state.editing} onChange={this.handleChange} onKeyPress={this.handleKeyPress} />
       </div>
     );
   }

@@ -17,5 +17,11 @@ describe('actions', () => {
     expect(actions.logOut()).toEqual({
       type: actions.ActionType.LOG_OUT
     });
+  });
+  it('should create an update user action', () => {
+    expect(actions.updateUser({ parentName: 'test' })).toEqual({
+      type: actions.ActionType.UPDATE_USER,
+      user: { parentName: 'test' },
+    })
   })
 });

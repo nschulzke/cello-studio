@@ -41,6 +41,8 @@ export const user: Reducer<User | null, AllActions> = (state = null, action) => 
       return action.user;
     case ActionType.LOG_OUT:
       return null;
+    case ActionType.UPDATE_USER:
+      return Object.assign({}, state, action.user);
     default:
       return state;
   }

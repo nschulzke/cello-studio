@@ -1,10 +1,10 @@
-.Frame {
+.FrameView {
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
-.Frame .header {
+.FrameView .header {
   position: relative;
   z-index: 1;
   height: 4rem;
@@ -13,19 +13,20 @@
   background-color: #c8b6a8;
   padding: 0 2rem;
   box-shadow: 1px 1px 1px 1px rgba(0,0,0,75%);
+  align-items: center;
 }
 
-.Frame .main {
+.FrameView .main {
   display: flex;
   flex: 1;
 }
 
-.Frame .workspace {
+.FrameView .workspace {
   flex: 1;
   padding: 2rem;
 }
 
-.Frame .sidebar {
+.FrameView .sidebar {
   z-index: 1;
   position: relative;
   width: 10rem;
@@ -33,14 +34,23 @@
   box-shadow: 1px 2px 1px 1px rgba(0,0,0,75%);
 }
 
-.Frame .logo {
+.FrameView .logo {
+  max-width: 20rem;
   font-family: cursive;
   font-size: 1.5rem;
   color: inherit;
   text-decoration: none;
+  flex: 1;
+  max-width: 30rem;
 }
 
-.Frame .title {
-  flex-grow: 1;
+.FrameView .title {
+  flex: 1;
   text-align: center;
+}
+
+.FrameView .AccountInfo {
+  flex: 1;
+  max-width: 30rem;
+  justify-content: flex-end;
 }

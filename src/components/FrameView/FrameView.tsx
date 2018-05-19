@@ -1,24 +1,21 @@
 import * as React from 'react';
 import AccountInfo from './AccountInfo/AccountInfo';
-import './Frame.css'
+import './FrameView.css'
 import NavTab from './NavTab/NavTab';
 import * as Color from 'color';
 import NavSwitch from '../NavSwitch';
-import { SidebarLink, SwitchLink } from 'store/state';
+import { sidebarLinks, routingLinks } from 'constants/routes';
 
 export interface Props {
-  pageTitle: string;
   studentName: string;
-  sidebarLinks: SidebarLink[];
-  routingLinks: SwitchLink[];
   activePath: string;
 }
 
-const Frame: React.SFC<Props> = (props) => {
-  const activeLink = props.sidebarLinks.filter((link) => link.path === props.activePath)[0];
+const FrameView: React.SFC<Props> = (props) => {
+  const activeLink = sidebarLinks.filter((link) => link.path === props.activePath)[0];
   const frameColor = activeLink ? Color(activeLink.color).mix(Color('white'), 0.66).toString() : 'white';
   return (
-    <div className="Frame">
+    <div className="FrameView">
       <div className="header" style={{ backgroundColor: frameColor }}>
         <a className="logo" href="/">CSCello</a>
         <h1 className="title">{activeLink ? activeLink.label : ''}</h1>
@@ -26,16 +23,16 @@ const Frame: React.SFC<Props> = (props) => {
       </div>
       <div className="main">
         <div className="sidebar" style={{ backgroundColor: frameColor }}>
-          {props.sidebarLinks.map((link) => (
+          {sidebarLinks.map((link) => (
             <NavTab to={link.path} icon={link.icon} active={link.path === props.activePath} style={{ backgroundColor: link.color }}>{link.label}</NavTab>
           ))}
         </div>
         <div className="workspace">
-          <NavSwitch root="" links={props.routingLinks} />
+          <NavSwitch root="" links={routingLinks} />
         </div>
       </div>
     </div >
   )
 }
 
-export default Frame
+export default FrameView

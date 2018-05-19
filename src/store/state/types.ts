@@ -34,3 +34,8 @@ export interface SidebarLink {
   icon: string;
   color: string;
 }
+
+export interface Credentials {
+  email: string;
+  password: string;
+}

@@ -8,6 +8,7 @@
 .EditLabel .icon {
   margin-left: 0.5rem;
   text-align: right;
+  cursor: pointer;
 }
 
 .EditLabel .icon i {

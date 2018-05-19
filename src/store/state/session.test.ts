@@ -10,6 +10,8 @@ const LOG_IN: LogInAction = {
   user: newUser('test@example.com', 'testpass'),
 }
 
+const UPDATED_USER = newUser('test@test.com', 'testpass');
+
 describe('loggedIn reducer', () => {
   it('should have an initial state', () => {
     expect(reducers.loggedIn(undefined, {
@@ -72,4 +74,10 @@ describe('user reducer', () => {
       type: ActionType.LOG_OUT,
     })).toBe(null);
   });
+  it('should update a user', () => {
+    expect(reducers.user(LOG_IN.user, {
+      type: ActionType.UPDATE_USER,
+      user: { email: 'test@test.com' },
+    })).toEqual(UPDATED_USER)
+  })
 });
