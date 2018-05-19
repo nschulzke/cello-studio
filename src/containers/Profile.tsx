@@ -10,7 +10,7 @@ interface State {
 class Profile extends React.Component<any, State> {
   constructor(props: any) {
     super(props);
-    this.setState({ user: newUser('email@example.com', 'testpass') });
+    this.state = { user: newUser('email@example.com', 'testpass') };
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -20,7 +20,7 @@ class Profile extends React.Component<any, State> {
 
   public render() {
     return (
-      <ProfilePage user={newUser('email@example.com', 'testpass')} onChange={this.handleChange} />
+      <ProfilePage user={this.state.user} onChange={this.handleChange} />
     );
   }
 }

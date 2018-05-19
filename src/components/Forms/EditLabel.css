@@ -10,6 +10,10 @@
   text-align: right;
 }
 
-.EditLabel .icon .far {
+.EditLabel .icon i {
   vertical-align: bottom;
+}
+
+.EditLabel .icon i:not(:last-child) {
+  margin-right: 0.5rem;
 }

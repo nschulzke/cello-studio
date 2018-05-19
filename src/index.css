@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-size: inherit;
 }
 
 #root, body, html {
@@ -13,9 +14,21 @@ body {
   font-size: 100%;
 }
 
+#root {
+  font-size: 1rem;
+}
+
 h1, h2 {
   margin: 0;
   padding: 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.3rem;
 }
 
 .fa {
