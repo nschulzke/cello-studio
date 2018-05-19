@@ -1,0 +1,15 @@
+.EditLabel label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+  flex-grow: 1;
+}
+
+.EditLabel .icon {
+  margin-left: 0.5rem;
+  text-align: right;
+}
+
+.EditLabel .icon .far {
+  vertical-align: bottom;
+}

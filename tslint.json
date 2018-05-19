@@ -19,11 +19,9 @@
     "no-console": {
       "severity": "warning"
     },
-    "object-literal-sort-keys": [
-      true,
-      "match-declaration-order"
-    ],
+    "object-literal-sort-keys": false,
     "max-classes-per-file": false,
     "no-namespace": false,
-  },
+    "no-bitwise": false
+  }
 }

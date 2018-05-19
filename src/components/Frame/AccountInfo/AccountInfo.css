@@ -1,0 +1,18 @@
+.AccountInfo {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.AccountInfo .icon {
+  display: inline-block;
+  font-size: 1.7rem;
+}
+
+.AccountInfo .name {
+  display: inline-block;
+}
+
+.AccountInfo a {
+  margin-left: 1em;
+  color: inherit;
+}

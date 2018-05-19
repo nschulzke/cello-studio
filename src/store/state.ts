@@ -6,7 +6,7 @@ export enum Permissions {
 
 export enum ContactType {
   NONE = 0,
-  PHONE_CALL = 1,
+  CALL = 1,
   EMAIL = 2,
   TEXT = 4,
   GROUP_TEXT = 8,
@@ -20,4 +20,17 @@ export interface User {
   contactEmail: string;
   contactPhone: string;
   contactType: ContactType;
+}
+
+export interface SwitchLink {
+  path: string;
+  exact?: boolean;
+  component: React.SFC | React.ComponentClass
+}
+
+export interface SidebarLink {
+  path: string;
+  label: string;
+  icon: string;
+  color: string;
 }
