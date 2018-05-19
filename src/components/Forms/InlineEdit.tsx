@@ -16,28 +16,24 @@ class InlineEdit extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { editing: false, value: this.props.value };
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.getValueText = this.getValueText.bind(this);
-    this.cancel = this.cancel.bind(this);
   }
 
-  public cancel() {
+  public cancel = () => {
     this.setState({ editing: false, value: this.props.value });
   }
 
-  public toggleEdit() {
+  public toggleEdit = () => {
     if (this.state.editing) {
       this.props.onChange(this.state.value);
     }
     this.setState({ editing: !this.state.editing });
   }
 
-  public handleChange(event: React.FormEvent<HTMLInputElement>) {
+  public handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     this.setState({ value: event.currentTarget.value });
   }
 
-  public getValueText() {
+  public getValueText = () => {
     if (this.state.editing) {
       return this.state.value;
     } else if (this.props.value.length) {

@@ -11,10 +11,9 @@ class Profile extends React.Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = { user: newUser('email@example.com', 'testpass') };
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  public handleChange(user: User) {
+  public handleChange = (user: User) => {
     this.setState({ user });
   }
 
