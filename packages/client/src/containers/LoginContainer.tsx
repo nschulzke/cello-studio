@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { Credentials } from 'store/state';
 import LoginPage from 'components/LoginPage/LoginPage';
 import { Callback } from 'modules/helpers';
+import axios from 'axios';
+import { User, Credentials } from 'shared';
 
 interface State {
   credentials: Credentials;
 }
 
 interface Props {
-  onSubmit: Callback<Credentials>
+  onLoggedIn: Callback<{ token: string, user: User }>
 }
 
 class LoginContainer extends React.Component<Props, State> {
@@ -17,9 +18,11 @@ class LoginContainer extends React.Component<Props, State> {
     this.state = { credentials: { email: '', password: '' } };
   }
 
-  public handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  public handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    this.props.onSubmit(this.state.credentials);
+    const result = await axios.get('/api/login');
+    console.log(result);
+    this.props.onLoggedIn(result.data);
   }
 
   public handleChange = (credentials: Credentials) => {

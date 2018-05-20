@@ -1,6 +1,6 @@
 import { ActionType, AllActions } from "store/actions";
 import { Reducer } from "redux";
-import { Permissions, User } from "store/state";
+import { Permissions, User } from 'shared';
 
 export const loggedIn: Reducer<boolean, AllActions> = (state = false, action) => {
   switch (action.type) {

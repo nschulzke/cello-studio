@@ -1,15 +1,15 @@
 import { logIn, AllActions } from "store/actions";
-import { Permissions, StoreState, Credentials } from "store/state";
+import { StoreState } from "store/state";
+import { Permissions, User } from 'shared';
 import { Dispatch } from "redux";
-import { newUser } from "store/helpers";
 import { connect } from "react-redux";
 import LoginContainer from "containers/LoginContainer";
 
 const mapStateToProps = (state: StoreState) => ({})
 
 const mapDispatchToProps = (dispatch: Dispatch<AllActions>) => ({
-  onSubmit: (credentials: Credentials) => {
-    dispatch(logIn(Permissions.ADMIN, 'mytoken', newUser(credentials.email, credentials.password)));
+  onLoggedIn: (result: { token: string, user: User }) => {
+    dispatch(logIn(Permissions.ADMIN, result.token, result.user));
   }
 })
 

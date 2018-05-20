@@ -1,4 +1,4 @@
-import { ContactType, User } from "./state";
+import { ContactType, User } from "shared";
 
 export function newUser(email: string, password: string): User {
   return {

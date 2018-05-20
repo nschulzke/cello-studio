@@ -1,0 +1,25 @@
+{
+  "name": "studio-server",
+  "version": "1.0.0",
+  "description": "Server project for cello studio app",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node src",
+    "debug": "ts-node --inspect dist",
+    "build:client": "node build/build.js"
+  },
+  "author": "Nathan Schulzke",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.11.1",
+    "ts-node": "^6.0.3",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3"
+  }
+}

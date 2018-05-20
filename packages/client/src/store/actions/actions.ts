@@ -1,5 +1,5 @@
 import { Action } from "redux";
-import { Permissions, User } from "store/state";
+import { Permissions, User } from 'shared';
 
 export enum ActionType {
   LOG_IN = "LOG_IN",
