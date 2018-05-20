@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Credentials } from 'store/state';
+import { Credentials } from 'studio-shared';
 import './LoginPage.css';
 import { Callback, onChangeInput } from 'modules/helpers';
 

@@ -1,6 +1,6 @@
 import * as reducers from './session';
 import { ActionType, LogInAction } from 'store/actions';
-import { Permissions } from 'shared';
+import { Permissions } from 'studio-shared';
 import { newUser } from '../helpers';
 
 const LOG_IN: LogInAction = {

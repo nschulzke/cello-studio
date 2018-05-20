@@ -19,6 +19,7 @@ interface User {
   contactEmail: string;
   contactPhone: string;
   contactType: ContactType;
+  permissions: Permissions;
 }
 
 enum Permissions {

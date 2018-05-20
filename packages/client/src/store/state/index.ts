@@ -1,4 +1,4 @@
-import { Permissions, User } from '.';
+import { Permissions, User } from 'studio-shared';
 
 export interface Session {
   loggedIn: boolean;

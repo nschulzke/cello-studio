@@ -2,7 +2,7 @@ import * as React from 'react';
 import LoginPage from 'components/LoginPage/LoginPage';
 import { Callback } from 'modules/helpers';
 import axios from 'axios';
-import { User, Credentials } from 'shared';
+import { User, Credentials } from 'studio-shared';
 
 interface State {
   credentials: Credentials;

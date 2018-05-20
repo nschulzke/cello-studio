@@ -8,8 +8,7 @@
     "watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node src",
-    "debug": "ts-node --inspect dist",
-    "build:client": "node build/build.js"
+    "debug": "ts-node --inspect dist"
   },
   "author": "Nathan Schulzke",
   "license": "MIT",

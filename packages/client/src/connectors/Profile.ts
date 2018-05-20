@@ -1,5 +1,6 @@
 import ProfilePage from 'components/ProfilePage/ProfilePage';
-import { User, StoreState } from 'store/state';
+import { StoreState } from 'store/state';
+import { User } from 'studio-shared';
 import { Dispatch } from 'redux';
 import { AllActions, updateUser } from 'store/actions';
 import { connect } from 'react-redux';

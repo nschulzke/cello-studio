@@ -1,15 +1,17 @@
 {
-  "name": "studio",
+  "name": "studio-shared",
   "version": "1.0.0",
   "description": "Shared library for studio app",
-  "main": "index.js",
+  "main": "dist/index.js",
   "dependencies": {},
   "devDependencies": {
     "concurrently": "^3.5.1",
     "ts-jest": "^22.4.6"
   },
   "scripts": {
-    "start": "concurrently \"cd ./packages/client && npm start\" \"cd ./packages/server && npm start\" \"cd ./packages/shared && npm start\"",
+    "start": "npm run watch",
+    "build": "tsc",
+    "watch": "tsc --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Nathan Schulzke",

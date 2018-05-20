@@ -1,6 +1,6 @@
 import { logIn, AllActions } from "store/actions";
 import { StoreState } from "store/state";
-import { Permissions, User } from 'shared';
+import { Permissions, User } from 'studio-shared';
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
 import LoginContainer from "containers/LoginContainer";

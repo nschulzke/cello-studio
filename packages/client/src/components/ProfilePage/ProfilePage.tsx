@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { User, ContactType } from 'store/state';
+import { User, ContactType } from 'studio-shared';
 import InlineEdit from '../Forms/InlineEdit';
 import InlineEditContactType from '../Forms/InlineEditContactType';
 import './ProfilePage.css';

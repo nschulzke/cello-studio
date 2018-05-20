@@ -1,5 +1,5 @@
 import * as actions from './actions';
-import { Permissions } from 'shared';
+import { Permissions } from 'studio-shared';
 import { newUser } from '../helpers';
 
 const user = newUser('test@example.com', 'test');

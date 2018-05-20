@@ -1,4 +1,4 @@
-import { ContactType, User } from "shared";
+import { ContactType, User, Permissions } from "studio-shared";
 
 export function newUser(email: string, password: string): User {
   return {
@@ -8,7 +8,8 @@ export function newUser(email: string, password: string): User {
     parentName: '',
     contactEmail: '',
     contactPhone: '',
-    contactType: ContactType.NONE
+    contactType: ContactType.NONE,
+    permissions: Permissions.ADMIN,
   }
 }
 
