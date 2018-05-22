@@ -1,4 +1,4 @@
-import app from './App';
+import app from './app';
 import { User } from 'studio-shared';
 
 const port: number = process.env.PORT || 5000;

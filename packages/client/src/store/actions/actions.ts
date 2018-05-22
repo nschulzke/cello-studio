@@ -1,36 +1,55 @@
 import { Action } from "redux";
-import { Permissions, User } from 'studio-shared';
+import { User, REST } from 'studio-shared';
+import { StoreState } from "../state";
+import axios from "axios";
+import { ThunkAction } from "redux-thunk";
 
 export enum ActionType {
-  LOG_IN = "LOG_IN",
-  LOG_OUT = "LOG_OUT",
+  LOGGED_IN = "LOGGED_IN",
+  LOGGED_OUT = "LOGGED_OUT",
   UPDATE_USER = "UPDATE_USER",
   UNKNOWN = "__ANY_UNKNOWN_ACTION__"
 }
 
-export interface LogInAction extends Action<ActionType.LOG_IN> {
-  permissions: Permissions;
+export interface LogInAction extends Action<ActionType.LOGGED_IN> {
   token: string;
   user: User;
 }
 
-export interface LogOutAction extends Action<ActionType.LOG_OUT> { }
+export interface LogOutAction extends Action<ActionType.LOGGED_OUT> { }
 
 export interface UpdateUserAction extends Action<ActionType.UPDATE_USER> {
   user: Partial<User>
 }
 
-export const logIn = (permissions: Permissions, token: string, user: User): LogInAction => {
+export const loggedIn = (token: string, user: User): LogInAction => {
   return {
-    type: ActionType.LOG_IN,
-    permissions,
+    type: ActionType.LOGGED_IN,
     token,
     user
   }
 };
 
-export const logOut = (): LogOutAction => ({
-  type: ActionType.LOG_OUT
+export const loginRequest = (credentials: REST.LoginRequest): ThunkAction<void, StoreState> => (dispatch, getState) => {
+  axios.post<REST.LoginResponse>('/api/users/login', credentials)
+    .then((res) => {
+      dispatch(loggedIn(res.data.token, res.data.user));
+    }).catch(err => {
+      alert(err.response.data);
+    })
+}
+
+export const registerRequest = (credentials: REST.RegisterRequest): ThunkAction<void, StoreState> => (dispatch, getState) => {
+  axios.post<REST.LoginResponse>('/api/users/register', credentials)
+    .then((res) => {
+      dispatch(loggedIn(res.data.token, res.data.user));
+    }).catch(err => {
+      alert(err.response.data);
+    })
+}
+
+export const loggedOut = (): LogOutAction => ({
+  type: ActionType.LOGGED_OUT
 });
 
 export const updateUser = (user: Partial<User>): UpdateUserAction => ({

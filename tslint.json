@@ -14,18 +14,6 @@
       "severity": "error"
     },
     "no-unsafe-any": true,
-    "typedef": {
-      "severity": "error",
-      "options": [
-        "call-signature",
-        "arrow-call-signature",
-        "parameter",
-        "arrow-parameter",
-        "property-declaration",
-        "variable-declaration",
-        "member-variable-declaration"
-      ]
-    },
     "no-object-literal-type-assertion": true,
     "no-inferred-empty-object-type": {
       "severity": "error"
@@ -49,7 +37,6 @@
         }
       ]
     },
-    "interface-over-type-literal": true,
     "unified-signatures": true,
     "no-duplicate-super": true,
     "no-duplicate-switch-case": true,
@@ -110,10 +97,6 @@
       "elements"
     ],
     "arrow-parens": true,
-    "arrow-return-shorthand": [
-      true,
-      "multiline"
-    ],
     "class-name": true,
     "prefer-method-signature": true,
     "prefer-template": true,

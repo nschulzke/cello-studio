@@ -1,21 +1,21 @@
-import { loginRequest, AllActions } from "store/actions";
+import { registerRequest, AllActions } from "store/actions";
 import { StoreState } from "store/state";
 import { Credentials } from 'studio-shared';
 import { Dispatch } from "redux";
 import { connect } from "react-redux";
-import LoginContainer from "containers/LoginContainer";
+import RegisterContainer from "containers/RegisterContainer";
 
 const mapStateToProps = (state: StoreState) => ({})
 
 const mapDispatchToProps = (dispatch: Dispatch<AllActions>) => ({
   onSubmit: (credentials: Credentials) => {
-    dispatch(loginRequest(credentials));
+    dispatch(registerRequest(credentials));
   }
 })
 
-const Login = connect(
+const Register = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(LoginContainer);
+)(RegisterContainer);
 
-export default Login;
+export default Register;

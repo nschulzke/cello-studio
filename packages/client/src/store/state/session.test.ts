@@ -1,11 +1,9 @@
 import * as reducers from './session';
 import { ActionType, LogInAction } from 'store/actions';
-import { Permissions } from 'studio-shared';
 import { newUser } from '../helpers';
 
 const LOG_IN: LogInAction = {
-  type: ActionType.LOG_IN,
-  permissions: Permissions.ADMIN,
+  type: ActionType.LOGGED_IN,
   token: 'testtoken',
   user: newUser('test@example.com', 'testpass'),
 }
@@ -23,24 +21,8 @@ describe('loggedIn reducer', () => {
   });
   it('should log out user', () => {
     expect(reducers.loggedIn(true, {
-      type: ActionType.LOG_OUT,
+      type: ActionType.LOGGED_OUT,
     })).toBe(false);
-  });
-});
-
-describe('permissions reducer', () => {
-  it('should have an initial state', () => {
-    expect(reducers.permissions(undefined, {
-      type: ActionType.UNKNOWN,
-    })).toBe(Permissions.NONE);
-  })
-  it('should log in user', () => {
-    expect(reducers.permissions(Permissions.NONE, LOG_IN)).toEqual(LOG_IN.permissions);
-  });
-  it('should log out user', () => {
-    expect(reducers.permissions(LOG_IN.permissions, {
-      type: ActionType.LOG_OUT,
-    })).toBe(Permissions.NONE);
   });
 });
 
@@ -55,7 +37,7 @@ describe('token reducer', () => {
   });
   it('should log out user', () => {
     expect(reducers.token(LOG_IN.token, {
-      type: ActionType.LOG_OUT,
+      type: ActionType.LOGGED_OUT,
     })).toBe(null);
   });
 });
@@ -71,7 +53,7 @@ describe('user reducer', () => {
   });
   it('should log out user', () => {
     expect(reducers.user(LOG_IN.user, {
-      type: ActionType.LOG_OUT,
+      type: ActionType.LOGGED_OUT,
     })).toBe(null);
   });
   it('should update a user', () => {

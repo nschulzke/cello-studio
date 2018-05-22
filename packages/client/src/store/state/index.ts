@@ -1,8 +1,7 @@
-import { Permissions, User } from 'studio-shared';
+import { User } from 'studio-shared';
 
 export interface Session {
   loggedIn: boolean;
-  permissions: Permissions;
   token: string | null;
   user: User | null;
 }

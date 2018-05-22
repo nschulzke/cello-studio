@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Credentials } from 'studio-shared';
-import './LoginPage.css';
+import './RegisterPage.css';
 import { Callback, onChangeInput } from 'modules/helpers';
 
 interface Props {
@@ -9,10 +9,10 @@ interface Props {
   onSubmit: Callback<React.FormEvent<HTMLFormElement>>
 }
 
-const LoginPage: React.SFC<Props> = (props) => {
+const RegisterPage: React.SFC<Props> = (props) => {
   return (
-    <div className="LoginPage">
-      <h2>Log in</h2>
+    <div className="RegisterPage">
+      <h2>Register</h2>
       <form onSubmit={props.onSubmit}>
         <input type="email" value={props.credentials.email}
           onChange={onChangeInput('email', props.credentials, props.onChange)} />
@@ -24,4 +24,4 @@ const LoginPage: React.SFC<Props> = (props) => {
   )
 }
 
-export default LoginPage
+export default RegisterPage

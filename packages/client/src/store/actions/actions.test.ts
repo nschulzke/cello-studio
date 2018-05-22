@@ -6,16 +6,16 @@ const user = newUser('test@example.com', 'test');
 
 describe('actions', () => {
   it('should create a login action', () => {
-    expect(actions.logIn(Permissions.ADMIN, 'testtoken', user)).toEqual({
-      type: actions.ActionType.LOG_IN,
+    expect(actions.loggedIn('testtoken', user)).toEqual({
+      type: actions.ActionType.LOGGED_IN,
       permissions: Permissions.ADMIN,
       token: 'testtoken',
       user
     });
   });
   it('should create a logout action', () => {
-    expect(actions.logOut()).toEqual({
-      type: actions.ActionType.LOG_OUT
+    expect(actions.loggedOut()).toEqual({
+      type: actions.ActionType.LOGGED_OUT
     });
   });
   it('should create an update user action', () => {

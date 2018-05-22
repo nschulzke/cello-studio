@@ -1,5 +1,5 @@
 import * as React from 'react';
-import LoginPage from 'components/LoginPage/LoginPage';
+import RegisterPage from 'components/RegisterPage/RegisterPage';
 import { Callback } from 'modules/helpers';
 import { Credentials } from 'studio-shared';
 
@@ -11,7 +11,7 @@ interface Props {
   onSubmit: Callback<Credentials>
 }
 
-class LoginContainer extends React.Component<Props, State> {
+class RegisterContainer extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { credentials: { email: '', password: '' } };
@@ -28,11 +28,11 @@ class LoginContainer extends React.Component<Props, State> {
 
   public render() {
     return (
-      <LoginPage credentials={this.state.credentials}
+      <RegisterPage credentials={this.state.credentials}
         onChange={this.handleChange}
         onSubmit={this.handleSubmit} />
     );
   }
 }
 
-export default LoginContainer;
+export default RegisterContainer;
