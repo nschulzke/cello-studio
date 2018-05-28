@@ -3,11 +3,11 @@ const path = require('path');
 const config = {
   resolve: {
     modules: [
-      path.resolve('./lib'), 'node_modules'
+      path.resolve('./src'), 'node_modules'
     ],
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
-  entry: ['babel-polyfill', './lib/renderers/dom/index.tsx'],
+  entry: ['babel-polyfill', './src/renderers/dom/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js'

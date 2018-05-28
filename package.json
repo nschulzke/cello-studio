@@ -2,14 +2,14 @@
   "name": "advanced-react",
   "version": "1.0.0",
   "description": "Advanced React",
-  "main": "lib/server.js",
+  "main": "src/server.js",
   "author": "Nathan Schulzke",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "dev": "NODE_PATH=./lib nodemon --watch 'lib/**/*.*' --exec 'ts-node' lib/server/index.ts",
+    "dev": "NODE_PATH=./src nodemon --watch 'src/**/*.*' --exec 'ts-node' src/server/index.ts",
     "webpack": "webpack -wd",
-    "test": "NODE_PATH=./lib jest --watch"
+    "test": "NODE_PATH=./src jest --watch"
   },
   "babel": {
     "presets": [
@@ -20,11 +20,11 @@
   },
   "jest": {
     "collectCoverageFrom": [
-      "lib/**/*.{js,jsx,ts,tsx}"
+      "src/**/*.{js,jsx,ts,tsx}"
     ],
     "testMatch": [
-      "<rootDir>/lib/**/__tests__/**/*.(j|t)s?(x)",
-      "<rootDir>/lib/**/?(*.)(spec|test).(j|t)s?(x)"
+      "<rootDir>/src/**/__tests__/**/*.(j|t)s?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).(j|t)s?(x)"
     ],
     "testEnvironment": "node",
     "testURL": "http://localhost",
