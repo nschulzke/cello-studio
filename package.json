@@ -18,6 +18,38 @@
       "stage-2"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "lib/**/*.{js,jsx,ts,tsx}"
+    ],
+    "testMatch": [
+      "<rootDir>/lib/**/__tests__/**/*.(j|t)s?(x)",
+      "<rootDir>/lib/**/?(*.)(spec|test).(j|t)s?(x)"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.tsx?$": "<rootDir>/config/jest/typescriptTransform.js",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|mjs|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs|ts|tsx)$"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json"
+    ],
+    "globals": {
+      "ts-jest": {
+        "tsConfigFile": "tsconfig.json"
+      }
+    }
+  },
   "devDependencies": {
     "babel-eslint": "^8.2.3",
     "enzyme": "^3.3.0",
@@ -71,6 +103,7 @@
     "redux": "^4.0.0",
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.21.0",
+    "ts-jest": "^22.4.6",
     "typescript": "^2.8.3",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.4"

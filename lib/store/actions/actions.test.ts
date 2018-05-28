@@ -1,5 +1,4 @@
 import * as actions from './actions';
-import { Permissions } from 'types';
 import { newUser } from '../helpers';
 
 const user = newUser('test@example.com', 'test');
@@ -8,7 +7,6 @@ describe('actions', () => {
   it('should create a login action', () => {
     expect(actions.loggedIn('testtoken', user)).toEqual({
       type: actions.ActionType.LOGGED_IN,
-      permissions: Permissions.ADMIN,
       token: 'testtoken',
       user
     });
