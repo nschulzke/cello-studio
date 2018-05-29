@@ -1,17 +1,4 @@
-import { ContactType, User, Permissions } from "./types";
-
-export function newUser(email: string, password: string): User {
-  return {
-    email,
-    password,
-    studentName: '',
-    parentName: '',
-    contactEmail: '',
-    contactPhone: '',
-    contactType: ContactType.NONE,
-    permissions: Permissions.ADMIN,
-  }
-}
+import { ContactType } from "./domain/types";
 
 export function contactType(type: ContactType): string {
   const result = [];

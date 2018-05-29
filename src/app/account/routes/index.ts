@@ -1,15 +1,15 @@
 import { Router, Request, Response } from 'express';
 import { Result } from 'app/shared/types';
 import { respond } from 'server/helpers/REST';
-import * as Invites from './model/Invites';
-import * as Users from './model/Users';
-import { isRegisterRequest, LoginResponse, isLoginRequest } from './types';
+import * as Invites from '../model/Invites';
+import * as Users from '../model/Users';
+import { LoginResponse, RegisterRequest, LoginRequest } from './types';
 
 const router: Router = Router();
 router.post('/login', (req: Request, res: Response) => {
-  if (isLoginRequest(req.body)) {
+  if (LoginRequest.is(req.body)) {
     Users.findUser(req.body.email).then((result) => {
-      if (Result.isSuccess(result) && result.data.password === req.body.password) {
+      if (Result.isSuccess(result) && result.data.credentials.compare(req.body)) {
         respond<LoginResponse>(res, { token: 'test', user: result.data });
       } else {
         res.status(403).send('Invalid username or password');
@@ -20,7 +20,7 @@ router.post('/login', (req: Request, res: Response) => {
   }
 });
 router.post('/register', (req: Request, res: Response) => {
-  if (isRegisterRequest(req.body)) {
+  if (RegisterRequest.is(req.body)) {
     Users.createUser(req.body).then((result) => {
       if (Result.isSuccess(result)) {
         respond<LoginResponse>(res, { token: 'test', user: result.data });

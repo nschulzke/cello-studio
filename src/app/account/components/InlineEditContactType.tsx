@@ -1,6 +1,6 @@
 import * as React from 'react'
 import EditLabel from 'app/shared/components/EditLabel';
-import { ContactType } from '../types';
+import { ContactType } from '../domain/types';
 import './InlineEditContactType.css';
 
 interface Props {

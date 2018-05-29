@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Credentials } from '../types';
+import { CredentialsRaw } from '../domain/types';
 import { Callback, onChangeInput } from 'app/shared/modules/helpers';
 import './RegisterView.css';
 
 interface Props {
-  credentials: Credentials;
-  onChange: Callback<Credentials>;
+  credentials: CredentialsRaw;
+  onChange: Callback<CredentialsRaw>;
   onSubmit: Callback<React.FormEvent<HTMLFormElement>>
 }
 

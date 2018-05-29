@@ -1,7 +1,7 @@
 import * as actions from './actions';
-import { newUser } from '../helpers';
+import { UserClass } from '../domain/User';
 
-const user = newUser('test@example.com', 'test');
+const user = new UserClass({ email: 'test@example.com', hash: 'test' });
 
 describe('actions', () => {
   it('should create a login action', () => {

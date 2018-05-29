@@ -1,8 +1,4 @@
 interface TypeChecker<T> {
-  /**
-   * Given an object literal, will guarantee that it matches the specifications
-   */
-  check(obj: T): T;
   is(obj: T): obj is T;
 }
 

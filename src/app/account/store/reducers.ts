@@ -1,6 +1,6 @@
 import { ReducerType } from "app/shared/store";
 import { ActionTypes } from "./actions";
-import { User } from '../types';
+import { User } from '../domain/types';
 
 export const loggedIn: ReducerType<boolean> = (state = false, action) => {
   switch (action.type) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { User, ContactType } from '../types';
+import { User, ContactType } from '../domain/types';
 import InlineEdit from 'app/shared/components/InlineEdit';
 import InlineEditContactType from './InlineEditContactType';
 import './ProfileView.css';

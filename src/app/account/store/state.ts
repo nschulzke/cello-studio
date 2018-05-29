@@ -1,4 +1,4 @@
-import { User } from '../types';
+import { User } from '../domain/types';
 
 export interface AccountState {
   loggedIn: boolean;

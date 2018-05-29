@@ -1,15 +1,18 @@
 import * as reducers from './reducers';
 import { GlobalActionTypes } from 'app/shared/store/actions';
 import { ActionTypes, LogInAction } from './actions';
-import { newUser } from '../helpers';
+import { UserClass } from '../domain/User';
+
+const INITIAL_USER = new UserClass({ email: 'test@example.com', hash: 'test' });
+const UPDATED_USER = new UserClass({ email: 'test@example.com', hash: 'test' });
+UPDATED_USER.id = INITIAL_USER.id;
+UPDATED_USER.parentName = 'test';
 
 const LOG_IN: LogInAction = {
   type: ActionTypes.LOGGED_IN,
   token: 'testtoken',
-  user: newUser('test@example.com', 'testpass'),
+  user: INITIAL_USER,
 }
-
-const UPDATED_USER = newUser('test@test.com', 'testpass');
 
 describe('loggedIn reducer', () => {
   it('should have an initial state', () => {
@@ -60,7 +63,7 @@ describe('user reducer', () => {
   it('should update a user', () => {
     expect(reducers.user(LOG_IN.user, {
       type: ActionTypes.UPDATE_USER,
-      user: { email: 'test@test.com' },
+      user: { parentName: 'test' },
     })).toEqual(UPDATED_USER)
   })
 });

@@ -1,7 +1,7 @@
 import ProfileView from './ProfileView';
 import { AccountState } from '../store/state';
 import { updateUser } from '../store/actions';
-import { User } from '../types';
+import { User } from '../domain/types';
 import { connect } from 'react-redux';
 import { DispatchType } from '../../shared/store';
 

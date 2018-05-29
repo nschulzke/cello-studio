@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Callback } from 'app/shared/modules/helpers';
-import { Credentials } from '../types';
+import { CredentialsRaw } from '../domain/types';
 import RegisterView from './RegisterView';
 
 interface State {
-  credentials: Credentials;
+  credentials: CredentialsRaw;
 }
 
 interface Props {
-  onSubmit: Callback<Credentials>
+  onSubmit: Callback<CredentialsRaw>
 }
 
 class RegisterContainer extends React.Component<Props, State> {
@@ -22,7 +22,7 @@ class RegisterContainer extends React.Component<Props, State> {
     this.props.onSubmit(this.state.credentials);
   }
 
-  public handleChange = (credentials: Credentials) => {
+  public handleChange = (credentials: CredentialsRaw) => {
     this.setState({ credentials });
   }
 

@@ -1,10 +1,11 @@
 import { Result, Index } from 'app/shared/types';
-import { User, ContactType, Permissions } from '../types';
-import { Credentials } from '../types';
+import { CredentialsRaw } from '../domain/types';
+import { UserClass } from '../domain/User';
+import { CredentialsClass } from '../domain/Credentials';
 
-const users: Index<User> = {};
+const users: Index<UserClass> = {};
 
-async function findUser(email: string): Promise<Result<User>> {
+async function findUser(email: string): Promise<Result<UserClass>> {
   if (users[email]) {
     return Result.success(users[email]);
   } else {
@@ -12,18 +13,9 @@ async function findUser(email: string): Promise<Result<User>> {
   }
 }
 
-async function createUser(credentials: Credentials): Promise<Result<User>> {
+async function createUser(credentials: CredentialsRaw): Promise<Result<UserClass>> {
   if (users[credentials.email] === undefined) {
-    users[credentials.email] = {
-      email: credentials.email,
-      password: credentials.password,
-      studentName: '',
-      parentName: '',
-      contactEmail: credentials.email,
-      contactPhone: '',
-      contactType: ContactType.NONE,
-      permissions: Permissions.STUDENT,
-    };
+    users[credentials.email] = new UserClass(CredentialsClass.hash(credentials));
     return Result.success(users[credentials.email]);
   } else {
     return Result.failure('Email in use');

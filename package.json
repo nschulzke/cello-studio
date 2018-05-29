@@ -74,6 +74,7 @@
     "@types/react-redux": "^6.0.0",
     "@types/react-router": "^4.0.25",
     "@types/react-router-dom": "^4.2.6",
+    "@types/uuid": "^3.4.3",
     "awesome-typescript-loader": "^5.0.0",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
@@ -105,6 +106,7 @@
     "style-loader": "^0.21.0",
     "ts-jest": "^22.4.6",
     "typescript": "^2.8.3",
+    "uuid": "^3.2.1",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.4"
   }

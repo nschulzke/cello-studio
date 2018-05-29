@@ -2,7 +2,8 @@ import { Action } from "redux";
 import axios from "axios";
 import { StoreState } from "app/shared/store/state";
 import { AsyncAction } from "app/shared/store/async";
-import { User, LoginRequest, LoginResponse, RegisterRequest } from '../types';
+import { User } from '../domain/types';
+import { LoginRequest, LoginResponse, RegisterRequest } from '../routes/types';
 
 export enum ActionTypes {
   LOGGED_IN = "LOGGED_IN",
