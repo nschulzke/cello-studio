@@ -7,7 +7,7 @@ const config = {
     ],
     extensions: ['.ts', '.tsx', '.js', '.jsx']
   },
-  entry: ['babel-polyfill', './src/renderers/dom/index.tsx'],
+  entry: ['babel-polyfill', './src/client/index.tsx'],
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js'

@@ -4,7 +4,7 @@ import * as session from 'express-session';
 import * as passport from 'passport';
 import { Strategy, IVerifyOptions } from 'passport-local';
 import * as bcrypt from 'bcrypt';
-import { Maybe } from 'types';
+import { Maybe } from 'app/shared/types';
 import { router as apiRouter } from './routes/api';
 
 type User = {

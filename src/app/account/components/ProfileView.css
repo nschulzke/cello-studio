@@ -1,0 +1,8 @@
+.ProfileView {
+  max-width: 18rem;
+  margin: 0 auto;
+}
+
+.ProfileView h2 {
+  margin-bottom: 1rem;
+}
