@@ -1,11 +1,11 @@
 import { connect } from "react-redux";
 import { DispatchType } from "app/shared/store";
 import { CredentialsRaw } from '../domain/types';
-import { AccountState } from "../store/state";
+import { UsersState } from "../store/state";
 import { loginRequest } from "../store/actions";
 import LoginContainer from "./LoginContainer";
 
-const mapStateToProps = (state: AccountState) => ({})
+const mapStateToProps = (state: UsersState) => ({})
 
 const mapDispatchToProps = (dispatch: DispatchType) => ({
   onSubmit: (credentials: CredentialsRaw) => {

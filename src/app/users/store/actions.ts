@@ -63,7 +63,7 @@ export const profileUpdated = (response: UpdateProfileResponse): ProfileUpdatedA
   ...response,
 });
 
-export type AccountActions =
+export type UserActions =
   | LoggedInAction
   | LoggedOutAction
   | ProfileUpdatedAction

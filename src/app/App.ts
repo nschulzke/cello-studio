@@ -3,7 +3,7 @@ import { AllActions } from 'app/shared/store/actions';
 import { StoreState } from 'app/shared/store/state';
 import { RCP } from 'app/shared/modules/routing';
 import AppView from './AppView';
-import { Permissions } from './account/domain/types';
+import { Permissions } from './users/domain/types';
 
 const mapStateToProps = (state: StoreState, ownProps: RCP) => ({
   loggedIn: state.permissions !== Permissions.NONE,

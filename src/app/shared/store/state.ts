@@ -1,8 +1,8 @@
-import { AccountState } from 'app/account/store/state';
+import { UsersState } from 'app/users/store/state';
 
 export interface GlobalState {
 }
 
 export type StoreState =
   & GlobalState
-  & AccountState;
+  & UsersState;

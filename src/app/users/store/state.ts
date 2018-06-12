@@ -1,6 +1,6 @@
 import { Permissions, Profile } from '../domain/types';
 
-export interface AccountState {
+export interface UsersState {
   token: string | null;
   email: string | null;
   permissions: Permissions;

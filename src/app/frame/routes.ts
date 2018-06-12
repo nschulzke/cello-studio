@@ -1,7 +1,7 @@
 import { SwitchLink, SidebarLink } from "app/shared/types";
 import Home from "app/frame/components/Home";
 import NotFound from "app/shared/components/NotFound";
-import Profile from "app/account/components/Profile";
+import Profile from "app/users/components/Profile";
 
 const home: SwitchLink = { path: '/', exact: true, component: Home }
 const sidebarLinks: Array<SidebarLink & SwitchLink> = [

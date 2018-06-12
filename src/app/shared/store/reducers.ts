@@ -1,1 +1,1 @@
-export * from 'app/account/store/reducers';
+export * from 'app/users/store/reducers';

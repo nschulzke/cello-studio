@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { RCP } from "app/shared/modules/routing";
 import { Redirect } from 'react-router';
-import Login from 'app/account/components/Login';
-import Register from 'app/account/components/Register';
+import Login from 'app/users/components/Login';
+import Register from 'app/users/components/Register';
 import Frame from 'app/frame/components/Frame';
 
 interface Props extends RCP {
