@@ -8,7 +8,7 @@ interface Props {
 }
 
 const mapStateToProps = (state: StoreState, ownProps: Props) => ({
-  email: state.user ? state.user.credentials.email : '',
+  email: state.email ? state.email : '',
   activePath: ownProps.activePath,
 })
 

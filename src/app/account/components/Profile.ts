@@ -6,8 +6,8 @@ import { connect } from 'react-redux';
 import { DispatchType } from '../../shared/store';
 
 const mapStateToProps = (state: AccountState) => ({
-  profile: state.user ? state.user.profile : null,
-  email: state.user ? state.user.credentials.email : null,
+  profile: state.profile,
+  email: state.email,
 })
 
 const mapDispatchToProps = (dispatch: DispatchType) => ({

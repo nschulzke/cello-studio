@@ -1,7 +1,8 @@
-import { User } from '../domain/types';
+import { Permissions, Profile } from '../domain/types';
 
 export interface AccountState {
-  loggedIn: boolean;
   token: string | null;
-  user: User | null;
+  email: string | null;
+  permissions: Permissions;
+  profile: Profile | null;
 }

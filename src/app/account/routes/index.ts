@@ -10,7 +10,12 @@ router.post('/login', (req: Request, res: Response) => {
   if (LoginRequest.is(req.body)) {
     Users.findUser(req.body.email).then((result) => {
       if (Result.isSuccess(result) && result.data.credentials.compare(req.body)) {
-        respond<LoginResponse>(res, { token: 'test', user: result.data });
+        respond<LoginResponse>(res, {
+          email: result.data.credentials.email,
+          token: 'test',
+          permissions: result.data.permissions,
+          profile: result.data.profile
+        });
       } else {
         res.status(403).send('Invalid username or password');
       }
@@ -23,7 +28,12 @@ router.post('/register', (req: Request, res: Response) => {
   if (RegisterRequest.is(req.body)) {
     Users.createUser(req.body).then((result) => {
       if (Result.isSuccess(result)) {
-        respond<LoginResponse>(res, { token: 'test', user: result.data });
+        respond<LoginResponse>(res, {
+          email: result.data.credentials.email,
+          token: 'test',
+          permissions: result.data.permissions,
+          profile: result.data.profile
+        });
       } else {
         res.status(403).send('Email is already in use');
       }

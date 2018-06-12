@@ -1,13 +1,13 @@
 import { ReducerType } from "app/shared/store";
 import { ActionTypes } from "./actions";
-import { User } from '../domain/types';
+import { Permissions, Profile } from '../domain/types';
 
-export const loggedIn: ReducerType<boolean> = (state = false, action) => {
+export const permissions: ReducerType<Permissions> = (state = Permissions.NONE, action) => {
   switch (action.type) {
     case ActionTypes.LOGGED_IN:
-      return true;
+      return action.permissions;
     case ActionTypes.LOGGED_OUT:
-      return false;
+      return Permissions.NONE;
     default:
       return state;
   }
@@ -24,14 +24,25 @@ export const token: ReducerType<string | null> = (state = null, action) => {
   }
 }
 
-export const user: ReducerType<User | null> = (state = null, action) => {
+export const email: ReducerType<string | null> = (state = null, action) => {
   switch (action.type) {
     case ActionTypes.LOGGED_IN:
-      return action.user;
+      return action.email;
     case ActionTypes.LOGGED_OUT:
       return null;
-    case ActionTypes.USER_UPDATED:
-      return Object.assign({}, state, action.user);
+    default:
+      return state;
+  }
+}
+
+export const profile: ReducerType<Profile | null> = (state = null, action) => {
+  switch (action.type) {
+    case ActionTypes.LOGGED_IN:
+      return action.profile;
+    case ActionTypes.LOGGED_OUT:
+      return null;
+    case ActionTypes.PROFILE_UPDATED:
+      return Object.assign({}, state, action.profile);
     default:
       return state;
   }

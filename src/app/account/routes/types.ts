@@ -1,4 +1,4 @@
-import { Invite, User, CredentialsRaw, Profile, typeIs } from '../domain/types';
+import { Invite, CredentialsRaw, Profile, typeIs, Permissions } from '../domain/types';
 import { TypeChecker } from 'app/shared/types';
 
 type LoginRequest = CredentialsRaw;
@@ -28,12 +28,19 @@ const InviteResponse: TypeChecker<InviteResponse> = {
   },
 }
 
-type LoginResponse = { token: string, user: User };
+type LoginResponse = {
+  email: string,
+  token: string,
+  permissions: Permissions,
+  profile: Profile,
+};
 
 const LoginResponse: TypeChecker<LoginResponse> = {
   is: (obj: any): obj is LoginResponse => {
-    return typeof obj.token === 'string'
-      && typeIs.User(obj.user);
+    return typeof obj.email === 'string'
+      && typeof obj.token === 'string'
+      && obj.permissions in Permissions
+      && typeIs.Profile(obj.profile);
   },
 };
 

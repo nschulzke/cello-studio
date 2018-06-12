@@ -1,14 +1,25 @@
 import * as actions from './actions';
-import { UserClass } from '../domain/User';
+import { Permissions, ContactType } from '../domain/types';
+import { LoginResponse } from '../routes/types';
 
-const user = new UserClass({ email: 'test@example.com', hash: 'test' });
+const RESPONSE: LoginResponse = {
+  email: 'test@test.com',
+  token: 'test',
+  permissions: Permissions.ADMIN,
+  profile: {
+    studentName: '',
+    parentName: '',
+    contactEmail: '',
+    contactPhone: '',
+    contactType: ContactType.NONE,
+  }
+}
 
 describe('actions', () => {
   it('should create a login action', () => {
-    expect(actions.loggedIn('testtoken', user)).toEqual({
+    expect(actions.loggedIn(RESPONSE)).toEqual({
       type: actions.ActionTypes.LOGGED_IN,
-      token: 'testtoken',
-      user
+      ...RESPONSE
     });
   });
   it('should create a logout action', () => {
@@ -17,9 +28,9 @@ describe('actions', () => {
     });
   });
   it('should create an update user action', () => {
-    expect(actions.userUpdated({ profile: { ...user.profile, parentName: 'test' } })).toEqual({
-      type: actions.ActionTypes.USER_UPDATED,
-      user: { profile: { ...user.profile, parentName: 'test' } },
+    expect(actions.profileUpdated(RESPONSE)).toEqual({
+      type: actions.ActionTypes.PROFILE_UPDATED,
+      ...RESPONSE
     })
   })
 });

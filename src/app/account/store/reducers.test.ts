@@ -1,32 +1,46 @@
 import * as reducers from './reducers';
 import { GlobalActionTypes } from 'app/shared/store/actions';
-import { ActionTypes, LogInAction } from './actions';
-import { UserClass } from '../domain/User';
+import { ActionTypes, LoggedInAction, ProfileUpdatedAction } from './actions';
+import { Permissions, ContactType } from '../domain/types';
 
-const INITIAL_USER = new UserClass({ email: 'test@example.com', hash: 'test' });
-const UPDATED_USER = new UserClass({ email: 'test@example.com', hash: 'test' });
-UPDATED_USER.id = INITIAL_USER.id;
-UPDATED_USER.profile.parentName = 'test';
-
-const LOG_IN: LogInAction = {
+const LOG_IN: LoggedInAction = {
   type: ActionTypes.LOGGED_IN,
-  token: 'testtoken',
-  user: INITIAL_USER,
+  email: 'test@test.com',
+  token: 'test',
+  permissions: Permissions.ADMIN,
+  profile: {
+    studentName: '',
+    parentName: '',
+    contactEmail: '',
+    contactPhone: '',
+    contactType: ContactType.NONE,
+  }
 }
 
-describe('loggedIn reducer', () => {
+const UPDATE_PROFILE: ProfileUpdatedAction = {
+  type: ActionTypes.PROFILE_UPDATED,
+  profile: {
+    studentName: 'Test Student',
+    parentName: 'Test Parent',
+    contactEmail: 'test@test.com',
+    contactPhone: '801 555 5555',
+    contactType: ContactType.EMAIL,
+  }
+}
+
+describe('email reducer', () => {
   it('should have an initial state', () => {
-    expect(reducers.loggedIn(undefined, {
+    expect(reducers.email(undefined, {
       type: GlobalActionTypes.UNKNOWN,
-    })).toBe(false);
+    })).toBe(null);
   })
   it('should log in user', () => {
-    expect(reducers.loggedIn(false, LOG_IN)).toBe(true);
+    expect(reducers.email(null, LOG_IN)).toEqual(LOG_IN.email);
   });
   it('should log out user', () => {
-    expect(reducers.loggedIn(true, {
+    expect(reducers.email(LOG_IN.token, {
       type: ActionTypes.LOGGED_OUT,
-    })).toBe(false);
+    })).toBe(null);
   });
 });
 
@@ -46,24 +60,37 @@ describe('token reducer', () => {
   });
 });
 
-describe('user reducer', () => {
+describe('permissions reducer', () => {
   it('should have an initial state', () => {
-    expect(reducers.user(undefined, {
+    expect(reducers.permissions(undefined, {
+      type: GlobalActionTypes.UNKNOWN,
+    })).toBe(false);
+  })
+  it('should log in user', () => {
+    expect(reducers.permissions(Permissions.NONE, LOG_IN)).toEqual(LOG_IN.permissions);
+  });
+  it('should log out user', () => {
+    expect(reducers.permissions(LOG_IN.permissions, {
+      type: ActionTypes.LOGGED_OUT,
+    })).toBe(Permissions.NONE);
+  });
+});
+
+describe('profile', () => {
+  it('should have an initial state', () => {
+    expect(reducers.profile(undefined, {
       type: GlobalActionTypes.UNKNOWN,
     })).toBe(null);
   })
   it('should log in user', () => {
-    expect(reducers.user(null, LOG_IN)).toEqual(LOG_IN.user);
+    expect(reducers.profile(null, LOG_IN)).toEqual(LOG_IN.profile);
   });
   it('should log out user', () => {
-    expect(reducers.user(LOG_IN.user, {
+    expect(reducers.profile(LOG_IN.profile, {
       type: ActionTypes.LOGGED_OUT,
     })).toBe(null);
   });
   it('should update a user', () => {
-    expect(reducers.user(LOG_IN.user, {
-      type: ActionTypes.USER_UPDATED,
-      user: { profile: { ...LOG_IN.user.profile, parentName: 'test' } },
-    })).toEqual(UPDATED_USER)
+    expect(reducers.profile(LOG_IN.profile, UPDATE_PROFILE)).toEqual(UPDATE_PROFILE.profile);
   })
 });
