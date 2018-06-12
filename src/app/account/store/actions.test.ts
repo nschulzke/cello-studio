@@ -17,9 +17,9 @@ describe('actions', () => {
     });
   });
   it('should create an update user action', () => {
-    expect(actions.updateUser({ parentName: 'test' })).toEqual({
-      type: actions.ActionTypes.UPDATE_USER,
-      user: { parentName: 'test' },
+    expect(actions.userUpdated({ profile: { ...user.profile, parentName: 'test' } })).toEqual({
+      type: actions.ActionTypes.USER_UPDATED,
+      user: { profile: { ...user.profile, parentName: 'test' } },
     })
   })
 });

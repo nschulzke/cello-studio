@@ -30,7 +30,7 @@ export const user: ReducerType<User | null> = (state = null, action) => {
       return action.user;
     case ActionTypes.LOGGED_OUT:
       return null;
-    case ActionTypes.UPDATE_USER:
+    case ActionTypes.USER_UPDATED:
       return Object.assign({}, state, action.user);
     default:
       return state;

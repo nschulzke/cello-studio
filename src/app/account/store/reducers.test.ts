@@ -6,7 +6,7 @@ import { UserClass } from '../domain/User';
 const INITIAL_USER = new UserClass({ email: 'test@example.com', hash: 'test' });
 const UPDATED_USER = new UserClass({ email: 'test@example.com', hash: 'test' });
 UPDATED_USER.id = INITIAL_USER.id;
-UPDATED_USER.parentName = 'test';
+UPDATED_USER.profile.parentName = 'test';
 
 const LOG_IN: LogInAction = {
   type: ActionTypes.LOGGED_IN,
@@ -62,8 +62,8 @@ describe('user reducer', () => {
   });
   it('should update a user', () => {
     expect(reducers.user(LOG_IN.user, {
-      type: ActionTypes.UPDATE_USER,
-      user: { parentName: 'test' },
+      type: ActionTypes.USER_UPDATED,
+      user: { profile: { ...LOG_IN.user.profile, parentName: 'test' } },
     })).toEqual(UPDATED_USER)
   })
 });

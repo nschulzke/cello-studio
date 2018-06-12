@@ -2,7 +2,6 @@ import * as uuid from 'uuid/v1';
 
 interface Entity {
   id: string;
-  is(obj: Entity): boolean;
 }
 
 class EntityClass implements Entity {

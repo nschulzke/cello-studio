@@ -1,5 +1,4 @@
 interface Value {
-  equals(obj: any): boolean;
 }
 
 function isValue(obj: any): obj is Value {

@@ -1,5 +1,5 @@
 import { Result, Index } from 'app/shared/types';
-import { CredentialsRaw, User } from '../domain/types';
+import { CredentialsRaw, User, Profile } from '../domain/types';
 import { UserClass } from '../domain/User';
 import { CredentialsClass } from '../domain/Credentials';
 import JSONDB from 'app/shared/persistence/JSONDB';
@@ -30,4 +30,14 @@ async function createUser(credentials: CredentialsRaw): Promise<Result<UserClass
   }
 }
 
-export { findUser, createUser };
+async function updateProfile(email: string, profile: Partial<Profile>): Promise<Result<Profile>> {
+  if (users[email]) {
+    users[email] = UserClass.deserialize({ ...users[email], profile: { ...users[email].profile, ...profile } });
+    database.write(users);
+    return Result.success(users[email].profile);
+  } else {
+    return Result.failure('No such email address');
+  }
+}
+
+export { findUser, createUser, updateProfile };

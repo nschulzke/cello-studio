@@ -1,17 +1,18 @@
 import ProfileView from './ProfileView';
 import { AccountState } from '../store/state';
-import { updateUser } from '../store/actions';
-import { User } from '../domain/types';
+import { updateProfileRequest } from '../store/actions';
+import { Profile as ProfileType } from '../domain/types';
 import { connect } from 'react-redux';
 import { DispatchType } from '../../shared/store';
 
 const mapStateToProps = (state: AccountState) => ({
-  user: state.user,
+  profile: state.user ? state.user.profile : null,
+  email: state.user ? state.user.credentials.email : null,
 })
 
 const mapDispatchToProps = (dispatch: DispatchType) => ({
-  onChange: (user: User) => {
-    dispatch(updateUser(user));
+  onChange: (email: string, profile: ProfileType) => {
+    dispatch(updateProfileRequest(email, profile));
   }
 })
 

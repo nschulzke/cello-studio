@@ -30,24 +30,37 @@ interface Invite extends Entity {
   expiresOn: Date,
 };
 
-interface User extends Entity {
-  credentials: Credentials;
+interface Profile {
   studentName: string;
   parentName: string;
   contactEmail: string;
   contactPhone: string;
   contactType: ContactType;
+}
+
+interface User extends Entity {
+  credentials: CredentialsHashed;
+  profile: Profile;
   permissions: Permissions;
 }
 
-function isUser(obj: any): obj is User {
-  return typeof obj.email === 'string'
-    && typeof obj.password === 'string'
-    && typeof obj.parentName === 'string'
-    && typeof obj.contactEmail === 'string'
-    && typeof obj.contactType === 'number'
-    && typeof obj.permissions === 'string'
-    && ['ADMIN', 'STUDENT', 'NONE'].filter((item) => item === obj.permissions).length === 1;
-};
+const typeIs = {
+  User(obj: any): obj is User {
+    return typeIs.CredentialsHashed(obj.credentials)
+      && typeIs.Profile(obj.profile)
+      && obj.permissions in Permissions
+  },
+  Profile(obj: any): obj is Profile {
+    return typeof obj.studentName === 'string'
+      && typeof obj.parentName === 'string'
+      && typeof obj.contactEmail === 'string'
+      && typeof obj.contactPhone === 'string'
+      && obj.contactType in ContactType;
+  },
+  CredentialsHashed(obj: any): obj is CredentialsHashed {
+    return typeof obj.email === 'string'
+      && typeof obj.hash === 'string';
+  }
+}
 
-export { ContactType, Permissions, CredentialsRaw, CredentialsHashed, Credentials, Invite, User, isUser }
+export { typeIs, ContactType, Permissions, CredentialsRaw, CredentialsHashed, Credentials, Invite, User, Profile }

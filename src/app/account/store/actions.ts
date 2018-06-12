@@ -2,13 +2,13 @@ import { Action } from "redux";
 import axios from "axios";
 import { StoreState } from "app/shared/store/state";
 import { AsyncAction } from "app/shared/store/async";
-import { User } from '../domain/types';
-import { LoginRequest, LoginResponse, RegisterRequest } from '../routes/types';
+import { User, Profile } from '../domain/types';
+import { LoginRequest, LoginResponse, RegisterRequest, UpdateProfileResponse } from '../routes/types';
 
 export enum ActionTypes {
   LOGGED_IN = "LOGGED_IN",
   LOGGED_OUT = "LOGGED_OUT",
-  UPDATE_USER = "UPDATE_USER",
+  USER_UPDATED = "UPDATE_USER",
 }
 
 export interface LogInAction extends Action<ActionTypes.LOGGED_IN> {
@@ -18,7 +18,7 @@ export interface LogInAction extends Action<ActionTypes.LOGGED_IN> {
 
 export interface LogOutAction extends Action<ActionTypes.LOGGED_OUT> { }
 
-export interface UpdateUserAction extends Action<ActionTypes.UPDATE_USER> {
+export interface UserUpdatedAction extends Action<ActionTypes.USER_UPDATED> {
   user: Partial<User>
 }
 
@@ -54,12 +54,22 @@ export const loggedOut = (): LogOutAction => ({
   type: ActionTypes.LOGGED_OUT
 });
 
-export const updateUser = (user: Partial<User>): UpdateUserAction => ({
-  type: ActionTypes.UPDATE_USER,
+export const updateProfileRequest = (email: string, profile: Partial<Profile>): AsyncAction<StoreState, UserUpdatedAction> =>
+  (dispatch, getState) => {
+    axios.post<UpdateProfileResponse>('/api/users/update-profile', { email, profile })
+      .then((res) => {
+        dispatch(userUpdated({ profile: res.data.profile }))
+      }).catch(err => {
+        alert(err.response.data);
+      });
+  }
+
+export const userUpdated = (user: Partial<User>): UserUpdatedAction => ({
+  type: ActionTypes.USER_UPDATED,
   user
 });
 
 export type AccountActions =
   | LogInAction
   | LogOutAction
-  | UpdateUserAction
+  | UserUpdatedAction

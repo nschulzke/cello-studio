@@ -1,5 +1,5 @@
 import { EntityClass } from "app/shared/domain/Entity";
-import { ContactType, Permissions, User, CredentialsHashed } from "./types";
+import { ContactType, Permissions, User, CredentialsHashed, Profile } from "./types";
 import { CredentialsClass } from "./Credentials";
 
 class UserClass extends EntityClass implements User {
@@ -7,11 +7,13 @@ class UserClass extends EntityClass implements User {
 
   constructor(
     credentials: CredentialsHashed,
-    public studentName: string = '',
-    public parentName: string = '',
-    public contactEmail: string = '',
-    public contactPhone: string = '',
-    public contactType: ContactType = ContactType.NONE,
+    public profile: Profile = {
+      studentName: '',
+      parentName: '',
+      contactEmail: '',
+      contactPhone: '',
+      contactType: ContactType.NONE,
+    },
     public permissions: Permissions = Permissions.STUDENT,
   ) {
     super();
@@ -21,11 +23,7 @@ class UserClass extends EntityClass implements User {
   static deserialize(user: User) {
     let retUser = new UserClass(
       user.credentials as CredentialsHashed,
-      user.studentName,
-      user.parentName,
-      user.contactEmail,
-      user.contactPhone,
-      user.contactType,
+      user.profile,
       user.permissions
     )
     retUser.id = user.id;
