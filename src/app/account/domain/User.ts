@@ -17,6 +17,20 @@ class UserClass extends EntityClass implements User {
     super();
     this.credentials = new CredentialsClass(credentials.email, credentials.hash);
   };
+
+  static deserialize(user: User) {
+    let retUser = new UserClass(
+      user.credentials as CredentialsHashed,
+      user.studentName,
+      user.parentName,
+      user.contactEmail,
+      user.contactPhone,
+      user.contactType,
+      user.permissions
+    )
+    retUser.id = user.id;
+    return retUser;
+  }
 }
 
 export { User, UserClass };
