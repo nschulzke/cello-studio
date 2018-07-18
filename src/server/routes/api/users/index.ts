@@ -64,6 +64,10 @@ const buildRouter = (users, invites) => {
     }
   });
 
+  router.get('/profiles', checkPermissions(Permissions.STUDENT), (req: Request, res: Response) => {
+    res.status(200).send(users.getProfiles());
+  });
+
   router.get('/invite', checkPermissions(Permissions.ADMIN), (req: Request, res: Response) => {
     res.json(invites.create());
   });

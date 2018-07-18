@@ -23,8 +23,8 @@ const ProfileView: React.SFC<Props> = (props) => {
     <div className="ProfileView">
       <h2>My Profile</h2>
       <div>
-        <InlineEdit value={props.profile.studentName}
-          onChange={inputChange('studentName')}>
+        <InlineEdit value={props.profile.name}
+          onChange={inputChange('name')}>
           Student Name
           </InlineEdit>
         <InlineEdit value={props.profile.parentName}

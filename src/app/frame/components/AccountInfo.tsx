@@ -2,14 +2,14 @@ import * as React from 'react';
 import './AccountInfo.css';
 
 interface Props {
-  studentName: string;
+  name: string;
   logout: () => {};
 }
 
 const AccountInfo: React.SFC<Props> = (props) => (
   <div className="AccountInfo">
     <div className="name">
-      {props.studentName}
+      {props.name}
     </div>
     <a onClick={props.logout}>
       <i className="icon fa fa-cog" />

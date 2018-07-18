@@ -9,5 +9,8 @@ export const profiles = {
       ...(userIndex[email] ? userIndex[email] : {}),
       ...getProfile(profile),
     }
-  })
+  }),
+
+  getAll: (userIndex) =>
+    Object.keys(userIndex).map((key) => getProfile(userIndex[key])),
 }

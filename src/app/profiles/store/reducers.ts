@@ -3,7 +3,7 @@ import { ActionTypes } from "./actions";
 import { Profile } from "domain/types";
 
 export const profile: ReducerType<Profile> = (state = {
-  studentName: '',
+  name: '',
   parentName: '',
   contactEmail: '',
   contactPhone: '',

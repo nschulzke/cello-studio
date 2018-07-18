@@ -7,7 +7,7 @@ export enum ContactType {
 }
 
 export interface Profile {
-  studentName: string;
+  name: string;
   parentName: string;
   contactEmail: string;
   contactPhone: string;

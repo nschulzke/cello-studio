@@ -3,7 +3,7 @@ import { ContactType } from 'domain/types';
 
 const RESPONSE = {
   profile: {
-    studentName: '',
+    name: '',
     parentName: '',
     contactEmail: '',
     contactPhone: '',

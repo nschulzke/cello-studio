@@ -5,7 +5,7 @@ import { ContactType } from 'domain/types';
 
 const INITIAL_PROFILE = {
   profile: {
-    studentName: '',
+    name: '',
     parentName: '',
     contactEmail: '',
     contactPhone: '',
@@ -16,7 +16,7 @@ const INITIAL_PROFILE = {
 const UPDATE_PROFILE: ProfileUpdatedAction = {
   type: ActionTypes.PROFILE_UPDATED,
   profile: {
-    studentName: 'Test Student',
+    name: 'Test Student',
     parentName: 'Test Parent',
     contactEmail: 'test@test.com',
     contactPhone: '801 555 5555',
@@ -29,7 +29,7 @@ describe('profile', () => {
     expect(reducers.profile(undefined, {
       type: GlobalActionTypes.UNKNOWN,
     })).toEqual({
-      studentName: '',
+      name: '',
       parentName: '',
       contactEmail: '',
       contactPhone: '',

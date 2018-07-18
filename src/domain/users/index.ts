@@ -38,6 +38,10 @@ export const hydrateUsers = (stream, state, secret) => {
       }
     },
 
+    getProfiles() {
+      return profiles.getAll(state);
+    },
+
     updateProfile(email, profile) {
       if (typeof state[email] === 'object') {
         state = profiles.update(state, email, profile);

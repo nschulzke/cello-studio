@@ -9,7 +9,7 @@ describe('index', () => {
   const secret = 'testpass';
   let newUser = { email: 'test@example.com', password: 'mynewpass' };
   let userModel = {};
-  let fullUserModel = { [newUser.email]: { ...credentials.hash(newUser), studentName: 'Test', parentName: 'Test2', permissions: Permissions.STUDENT } };
+  let fullUserModel = { [newUser.email]: { ...credentials.hash(newUser), name: 'Test', parentName: 'Test2', permissions: Permissions.STUDENT } };
   let stream = EventStream();
 
   describe('register', () => {
@@ -101,7 +101,7 @@ describe('index', () => {
         let got = users.getProfile(newUser.email);
         expect((got as any).hash).toEqual(undefined);
         expect(got.success).toBe(true);
-        expect(got.data.studentName).toEqual('Test');
+        expect(got.data.name).toEqual('Test');
         expect(got.data.parentName).toEqual('Test2');
         expect(got.data.contactEmail).toEqual('');
       });

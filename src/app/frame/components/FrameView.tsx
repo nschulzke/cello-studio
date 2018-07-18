@@ -30,7 +30,7 @@ const FrameView: React.SFC<Props> = (props) => {
       <div className="header" style={{ backgroundColor: frameColor }}>
         <a className="logo" href="/">CSCello</a>
         <h1 className="title">{activeLink ? activeLink.label : ''}</h1>
-        <AccountInfo logout={props.logout} studentName={props.email} />
+        <AccountInfo logout={props.logout} name={props.email} />
       </div>
       <div className="main">
         <div className="sidebar" style={{ backgroundColor: frameColor }}>

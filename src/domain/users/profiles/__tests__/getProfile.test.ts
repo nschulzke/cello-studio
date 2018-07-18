@@ -4,17 +4,17 @@ describe('getProfile', () => {
   it('fills in default values', () => {
     let result = getProfile({});
 
-    expect(result.studentName).toEqual('');
+    expect(result.name).toEqual('');
     expect(result.parentName).toEqual('');
   });
 
   it('returns the right values otherwise', () => {
     let result = getProfile({
-      studentName: 'Test Me',
+      name: 'Test Me',
       parentName: 'Help Me'
     });
 
-    expect(result.studentName).toEqual('Test Me');
+    expect(result.name).toEqual('Test Me');
     expect(result.parentName).toEqual('Help Me');
   });
 });

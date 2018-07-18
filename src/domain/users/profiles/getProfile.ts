@@ -1,13 +1,13 @@
 import { ContactType, Profile } from "./_types";
 
 export const getProfile: (profile: Partial<Profile>) => Profile = ({
-  studentName = '',
+  name = '',
   parentName = '',
   contactEmail = '',
   contactPhone = '',
   contactType = ContactType.NONE,
 }) => ({
-  studentName,
+  name,
   parentName,
   contactEmail,
   contactPhone,
