@@ -3,7 +3,7 @@ import { profiles } from './profiles';
 import { prepareUsers, prepareTokens, credentials } from './sessions';
 
 export const hydrateUsers = (stream, state, secret) => {
-  const tokens = prepareTokens({ secret, duration: '1m' });
+  const tokens = prepareTokens({ secret, duration: '40d' });
   const users = prepareUsers({ credentials, tokens });
 
   return {
@@ -22,8 +22,12 @@ export const hydrateUsers = (stream, state, secret) => {
       return users.login(state, { email, password })
     },
 
-    verify(token) {
-      return users.verify(state, token);
+    fetchUser(token) {
+      return users.fetchUser(state, token);
+    },
+
+    permissions(token) {
+      return users.permissions(state, token);
     },
 
     getProfile(email) {

@@ -1,32 +1,15 @@
-import * as reducers from './reducers';
-import { GlobalActionTypes } from 'app/shared/store/actions';
-import { ActionTypes, LoggedInAction, ProfileUpdatedAction } from './actions';
-import { ContactType, Permissions } from 'domain/types';
+import { Permissions } from "domain/types";
+import { GlobalActionTypes } from "app/shared/store/actions";
+import { ActionTypes, LoggedInAction } from "../actions";
+import * as reducers from '../reducers';
 
 const LOG_IN: LoggedInAction = {
   type: ActionTypes.LOGGED_IN,
   email: 'test@test.com',
   token: 'test',
   permissions: Permissions.ADMIN,
-  profile: {
-    studentName: '',
-    parentName: '',
-    contactEmail: '',
-    contactPhone: '',
-    contactType: ContactType.NONE,
-  }
 }
 
-const UPDATE_PROFILE: ProfileUpdatedAction = {
-  type: ActionTypes.PROFILE_UPDATED,
-  profile: {
-    studentName: 'Test Student',
-    parentName: 'Test Parent',
-    contactEmail: 'test@test.com',
-    contactPhone: '801 555 5555',
-    contactType: ContactType.EMAIL,
-  }
-}
 
 describe('email reducer', () => {
   it('should have an initial state', () => {
@@ -74,23 +57,4 @@ describe('permissions reducer', () => {
       type: ActionTypes.LOGGED_OUT,
     })).toBe(Permissions.NONE);
   });
-});
-
-describe('profile', () => {
-  it('should have an initial state', () => {
-    expect(reducers.profile(undefined, {
-      type: GlobalActionTypes.UNKNOWN,
-    })).toBe(null);
-  })
-  it('should log in user', () => {
-    expect(reducers.profile(null, LOG_IN)).toEqual(LOG_IN.profile);
-  });
-  it('should log out user', () => {
-    expect(reducers.profile(LOG_IN.profile, {
-      type: ActionTypes.LOGGED_OUT,
-    })).toBe(null);
-  });
-  it('should update a user', () => {
-    expect(reducers.profile(LOG_IN.profile, UPDATE_PROFILE)).toEqual(UPDATE_PROFILE.profile);
-  })
 });

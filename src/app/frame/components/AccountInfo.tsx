@@ -1,9 +1,9 @@
 import * as React from 'react';
 import './AccountInfo.css';
-import { Link } from 'react-router-dom';
 
 interface Props {
   studentName: string;
+  logout: () => {};
 }
 
 const AccountInfo: React.SFC<Props> = (props) => (
@@ -11,9 +11,9 @@ const AccountInfo: React.SFC<Props> = (props) => (
     <div className="name">
       {props.studentName}
     </div>
-    <Link to="/profile">
+    <a onClick={props.logout}>
       <i className="icon fa fa-cog" />
-    </Link>
+    </a>
   </div >
 )
 

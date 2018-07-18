@@ -1,4 +1,5 @@
-import { ActionTypes, LoggedInAction, LoggedOutAction, ProfileUpdatedAction } from 'app/users/store/actions';
+import { ActionTypes, ProfileUpdatedAction } from 'app/profiles/store/actions';
+import { LoggedInAction, LoggedOutAction } from '../../sessions/store/actions';
 
 export enum GlobalActionTypes {
   UNKNOWN = "__ANY_UNKNOWN_ACTION__"

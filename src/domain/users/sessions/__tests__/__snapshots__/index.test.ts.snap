@@ -1,5 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`users fetchUser rejects invalid tokens 1`] = `"Your token could not be validated."`;
+
 exports[`users login rejects a bad email address 1`] = `"Invalid email or password."`;
 
 exports[`users login rejects a bad email password 1`] = `"Invalid email or password."`;
@@ -7,5 +9,3 @@ exports[`users login rejects a bad email password 1`] = `"Invalid email or passw
 exports[`users register rejects an invalid email address 1`] = `"Email is invalid."`;
 
 exports[`users register rejects if the user is already registered 1`] = `"Email is in use."`;
-
-exports[`users verify rejects invalid tokens 1`] = `"Your token could not be validated."`;

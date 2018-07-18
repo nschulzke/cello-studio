@@ -6,7 +6,8 @@ export const prepareTokens = ({ secret, duration }) => ({
 
   decode: (token) => {
     try {
-      return jwt.verify(token, secret).data;
+      let result = jwt.verify(token, secret).data;
+      return result;
     } catch (e) {
       return false;
     }

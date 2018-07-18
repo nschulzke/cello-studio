@@ -1,6 +1,6 @@
 import Home from "app/frame/components/Home";
 import NotFound from "app/shared/components/NotFound";
-import Profile from "app/users/components/Profile";
+import Profile from "app/profiles/components/Profile";
 import Schedule from "app/scheduling/Schedule";
 import Calendar from "app/scheduling/Calendar";
 import Files from "app/files/Files";

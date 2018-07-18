@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Advanced React Application Example</title>
+    <link rel="stylesheet" href="/lib/fontawesome/css/all.css" crossorigin="anonymous">
+    <style>
+      .LoginView {
+        max-width: 18rem;
+        margin: 0 auto;
+      }
+
+      .LoginView h2 {
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="LoginView">
+      <h2>Log in here</h2>
+      <form action="/api/users/login?redirect=<%= redirect ? redirect : '/' %>" method="post">
+        <input type="email" name="email"/>
+        <input type="password" name="password"/>
+        <input type="hidden" name="redirect"/>
+        <button type="submit">Submit</button>
+      </form>
+    </div >
+  </body>
+</html>

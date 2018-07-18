@@ -24,12 +24,21 @@ export const prepareUsers = ({ credentials, tokens }) => ({
       ? Result.Success({ email, token: tokens.encode(email), permissions: userIndex[email].permissions })
       : Result.Failure('Invalid email or password.'),
 
-  verify: (userIndex, token) => {
+  fetchUser: (userIndex, token) => {
     let result = tokens.decode(token);
     if (result === false) {
       return Result.Failure('Your token could not be validated.');
     } else {
       return Result.Success(userIndex[result]);
+    }
+  },
+
+  permissions: (userIndex, token) => {
+    let email = tokens.decode(token);
+    if (email && userIndex[email] && userIndex[email].permissions) {
+      return userIndex[email].permissions;
+    } else {
+      return Permissions.NONE;
     }
   }
 });

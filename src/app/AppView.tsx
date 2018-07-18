@@ -1,8 +1,5 @@
 import * as React from 'react';
 import { RCP } from "app/shared/modules/routing";
-import { Redirect } from 'react-router';
-import Login from 'app/users/components/Login';
-import Register from 'app/users/components/Register';
 import Frame from 'app/frame/components/Frame';
 
 interface Props extends RCP {
@@ -11,28 +8,10 @@ interface Props extends RCP {
 }
 
 const AppView: React.SFC<Props> = (props) => {
-  if (props.activePath === '/login' || props.activePath === '/register') {
-    if (props.loggedIn) {
-      return (
-        <Redirect to={{
-          pathname: "/",
-          state: { from: props.location }
-        }} />
-      )
-    } else if (props.activePath === '/login') {
-      return <Login />
-    } else {
-      return <Register />
-    }
-  } else if (props.loggedIn) {
+  if (props.loggedIn) {
     return <Frame activePath={props.activePath} />
   } else {
-    return (
-      <Redirect to={{
-        pathname: "/login",
-        state: { from: props.location }
-      }} />
-    )
+    window.location.reload();
   }
 }
 

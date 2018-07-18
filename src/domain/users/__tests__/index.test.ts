@@ -84,11 +84,11 @@ describe('index', () => {
     let token = tokens.encode(newUser.email);
 
     it('returns the user object', () => {
-      expect(users.verify(token).data).toEqual(fullUserModel[newUser.email]);
+      expect(users.fetchUser(token).data).toEqual(fullUserModel[newUser.email]);
     });
 
     it('rejects invalid tokens', () => {
-      let failure = users.verify('badtoken');
+      let failure = users.fetchUser('badtoken');
       expect(failure.success).toBe(false);
       expect(failure.data).toMatchSnapshot();
     });

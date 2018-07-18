@@ -62,17 +62,34 @@ describe('users', () => {
     });
   });
 
-  describe('verify', () => {
+  describe('fetchUser', () => {
     let token = tokens.encode(newUser.email);
 
     it('returns the user object', () => {
-      expect(users.verify(fullUserModel, token).data).toEqual(fullUserModel[newUser.email]);
+      expect(users.fetchUser(fullUserModel, token).data).toEqual(fullUserModel[newUser.email]);
     });
 
     it('rejects invalid tokens', () => {
-      let failure = users.verify(fullUserModel, 'badtoken');
+      let failure = users.fetchUser(fullUserModel, 'badtoken');
       expect(failure.success).toBe(false);
       expect(failure.data).toMatchSnapshot();
+    });
+  });
+
+  describe('permissions', () => {
+    it('returns the permissions for a user', () => {
+      let token = tokens.encode(newUser.email);
+      expect(users.permissions(fullUserModel, token)).toEqual(Permissions.STUDENT);
+    });
+
+    it('returns none for an invalid user', () => {
+      let token = tokens.encode('garbage');
+      expect(users.permissions(fullUserModel, token)).toEqual(Permissions.NONE);
+    });
+
+    it('returns none for an invalid token', () => {
+      let token = 'garbage';
+      expect(users.permissions(fullUserModel, token)).toEqual(Permissions.NONE);
     });
   });
 });

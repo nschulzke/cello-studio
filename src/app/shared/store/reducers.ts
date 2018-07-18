@@ -1,1 +1,2 @@
-export * from 'app/users/store/reducers';
+export * from 'app/profiles/store/reducers';
+export * from 'app/sessions/store/reducers';

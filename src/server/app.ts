@@ -1,7 +1,7 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import * as session from 'express-session';
-import * as passport from 'passport';
+import * as cookieParser from 'cookie-parser';
+
 import { buildRouter } from './routes/api';
 import { hydrateUsers } from 'domain/users';
 import { hydrateInvites } from 'domain/invites';
@@ -24,19 +24,20 @@ let invites = hydrateInvites(inviteStream, inviteDB.read());
 let apiRouter = buildRouter({ users, invites });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser());
 app.use('/api', apiRouter);
-app.use(session({
-  resave: false,
-  saveUninitialized: false,
-  secret: 'testsecret',
-}));
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.use(async (req, res) => {
-  res.render('index');
+  if ((!req.cookies.auth || !users.fetchUser(req.cookies.auth.token).success) && req.path !== '/login' && req.path !== '/register') {
+    res.redirect('/login?redirect=' + req.path);
+  } else if (req.path === '/login') {
+    res.render('login', { redirect: req.query.redirect });
+  } else {
+    res.render('index', { initialData: req.cookies.initialData });
+  }
 });
 
 export default app;

@@ -1,15 +1,20 @@
 import { Router, Request, Response } from 'express';
-import { RegisterRequest, LoginRequest, UpdateProfileRequest, UpdateProfileResponse, LoginResponse } from 'server/types';
+import { RegisterRequest, LoginRequest, UpdateProfileRequest, UpdateProfileResponse } from 'server/types';
 import { respond } from 'server/helpers/REST';
+import * as moment from 'moment';
+import { permissionsCheck } from '../../../helpers/permissionsCheck';
+import { Permissions } from 'domain/types';
 
 const buildRouter = (users, invites) => {
   const router: Router = Router();
+  let checkPermissions = permissionsCheck(users)
 
   router.post('/login', (req: Request, res: Response) => {
     if (LoginRequest.is(req.body)) {
       let result = users.login(req.body);
       if (result.success) {
-        respond<LoginResponse>(res, { ...result.data, profile: users.getProfile(req.body.email).data });
+        res.cookie('auth', result.data, { expires: moment().add(1, 'month').toDate() });
+        res.redirect(req.query.redirect);
       } else {
         res.status(403).send(result.data);
       }
@@ -24,7 +29,8 @@ const buildRouter = (users, invites) => {
       if (result.success) {
         let login = result.login(req.body);
         if (login.success) {
-          respond<LoginResponse>(res, { ...result.data, profile: users.getProfile(req.body.email).data });
+          res.cookie('auth', result.data, { expires: moment().add(1, 'month').toDate() });
+          res.redirect(req.query.redirect);
         } else {
           res.status(500).send('An error occurred');
         }
@@ -36,8 +42,8 @@ const buildRouter = (users, invites) => {
     }
   });
 
-  router.post('/update-profile', (req: Request, res: Response) => {
-    if (UpdateProfileRequest.is(req.body)) {
+  router.post('/profile', checkPermissions(Permissions.STUDENT), (req: Request, res: Response) => {
+    if (UpdateProfileRequest.is(req.body) && req.body.email === req.cookies.auth.email) {
       let result = users.updateProfile(req.body.email, req.body.profile)
       if (result.success) {
         respond<UpdateProfileResponse>(res, { profile: result.data });
@@ -49,7 +55,16 @@ const buildRouter = (users, invites) => {
     }
   });
 
-  router.get('/invite', (req: Request, res: Response) => {
+  router.get('/profile', checkPermissions(Permissions.STUDENT), (req: Request, res: Response) => {
+    let result = users.getProfile(req.cookies.auth.email);
+    if (result.success) {
+      res.status(200).send(result.data);
+    } else {
+      res.status(400).send('Bad request');
+    }
+  });
+
+  router.get('/invite', checkPermissions(Permissions.ADMIN), (req: Request, res: Response) => {
     res.json(invites.create());
   });
 

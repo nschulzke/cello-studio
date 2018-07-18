@@ -38,7 +38,6 @@ type LoginResponse = {
   email: string,
   token: string,
   permissions: Permissions,
-  profile: Profile,
 };
 
 type UpdateProfileResponse = {

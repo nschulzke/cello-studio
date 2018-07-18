@@ -1,18 +1,11 @@
-import * as actions from './actions';
+import * as actions from '../actions';
 import { LoginResponse } from 'server/types';
-import { ContactType, Permissions } from 'domain/types';
+import { Permissions } from 'domain/types';
 
 const RESPONSE: LoginResponse = {
   email: 'test@test.com',
   token: 'test',
   permissions: Permissions.ADMIN,
-  profile: {
-    studentName: '',
-    parentName: '',
-    contactEmail: '',
-    contactPhone: '',
-    contactType: ContactType.NONE,
-  }
 }
 
 describe('actions', () => {
@@ -27,10 +20,4 @@ describe('actions', () => {
       type: actions.ActionTypes.LOGGED_OUT
     });
   });
-  it('should create an update user action', () => {
-    expect(actions.profileUpdated(RESPONSE)).toEqual({
-      type: actions.ActionTypes.PROFILE_UPDATED,
-      ...RESPONSE
-    })
-  })
 });
