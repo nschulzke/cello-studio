@@ -33,6 +33,10 @@ class InlineEdit extends React.Component<Props, State> {
     this.setState({ value: event.currentTarget.value });
   }
 
+  public componentWillReceiveProps(nextProps) {
+    this.setState({ value: nextProps.value });
+  }
+
   public handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
       this.toggleEdit();
@@ -43,7 +47,7 @@ class InlineEdit extends React.Component<Props, State> {
     if (this.state.editing) {
       return this.state.value;
     } else if (this.props.value.length) {
-      return this.props.value;
+      return this.state.value;
     } else {
       return 'None'
     }

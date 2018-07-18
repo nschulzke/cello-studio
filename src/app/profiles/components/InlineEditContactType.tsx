@@ -41,6 +41,11 @@ class InlineEditContactType extends React.Component<Props, State> {
     }
   }
 
+  public componentWillReceiveProps(nextProps) {
+    this.setState({ value: nextProps.value });
+  }
+
+
   public render() {
     return (
       <div className="InlineEditContactType">
