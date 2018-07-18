@@ -35,7 +35,7 @@ const FrameView: React.SFC<Props> = (props) => {
       <div className="main">
         <div className="sidebar" style={{ backgroundColor: frameColor }}>
           {sidebarLinks.filter(link => props.admin || link.admin !== true).map((link) => (
-            <NavTab to={link.path} icon={link.icon} active={link === activeLink} style={{ backgroundColor: link.color }}>{link.label}</NavTab>
+            <NavTab to={link.path} icon={link.icon} active={link === activeLink} style={{ backgroundColor: link.color }} key={link.path}>{link.label}</NavTab>
           ))}
         </div>
         <div className="workspace">

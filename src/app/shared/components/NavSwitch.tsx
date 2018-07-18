@@ -13,7 +13,7 @@ const NavSwitch: React.SFC<Props> = (props: Props) => {
   return (
     <Switch>
       {props.links.map((link) => (
-        <Route exact={link.exact} path={`${props.root}${link.path}`} component={link.component} />
+        <Route exact={link.exact} path={`${props.root}${link.path}`} component={link.component} key={link.path} />
       ))}
       <Route component={NotFound} />
     </Switch>
