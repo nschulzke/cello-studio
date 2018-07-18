@@ -8,7 +8,7 @@ import store from 'app/shared/store';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.hydrate(
+ReactDOM.render(
   (<Provider store={store}>
     <BrowserRouter>
       <Route component={App} />

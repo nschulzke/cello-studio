@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { DispatchType } from "app/shared/store";
-import { CredentialsRaw } from '../domain/types';
+import { CredentialsRaw } from "domain/types";
 import { UsersState } from "../store/state";
 import { loginRequest } from "../store/actions";
 import LoginContainer from "./LoginContainer";

@@ -1,6 +1,6 @@
 import { ReducerType } from "app/shared/store";
 import { ActionTypes } from "./actions";
-import { Permissions, Profile } from '../domain/types';
+import { Profile, Permissions } from "domain/types";
 
 export const permissions: ReducerType<Permissions> = (state = Permissions.NONE, action) => {
   switch (action.type) {

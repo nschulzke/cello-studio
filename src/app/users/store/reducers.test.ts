@@ -1,7 +1,7 @@
 import * as reducers from './reducers';
 import { GlobalActionTypes } from 'app/shared/store/actions';
 import { ActionTypes, LoggedInAction, ProfileUpdatedAction } from './actions';
-import { Permissions, ContactType } from '../domain/types';
+import { ContactType, Permissions } from 'domain/types';
 
 const LOG_IN: LoggedInAction = {
   type: ActionTypes.LOGGED_IN,
@@ -64,7 +64,7 @@ describe('permissions reducer', () => {
   it('should have an initial state', () => {
     expect(reducers.permissions(undefined, {
       type: GlobalActionTypes.UNKNOWN,
-    })).toBe(false);
+    })).toBe('NONE');
   })
   it('should log in user', () => {
     expect(reducers.permissions(Permissions.NONE, LOG_IN)).toEqual(LOG_IN.permissions);

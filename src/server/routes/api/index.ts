@@ -1,6 +1,10 @@
 import { Router } from 'express';
-import { router as users } from 'app/users/routes';
+import { buildRouter as buildUsers } from './users';
 
-const router: Router = Router();
-router.use('/users', users);
-export { router };
+const buildRouter = ({ users, invites }) => {
+  const router: Router = Router();
+  router.use('/users', buildUsers(users, invites));
+  return router;
+}
+
+export { buildRouter };

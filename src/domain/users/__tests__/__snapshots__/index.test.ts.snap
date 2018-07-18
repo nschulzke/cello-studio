@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index login rejects a bad email address 1`] = `"Invalid email or password."`;
+
+exports[`index login rejects a bad email password 1`] = `"Invalid email or password."`;
+
+exports[`index register rejects an invalid email address 1`] = `"Email is invalid."`;
+
+exports[`index register rejects if the user is already registered 1`] = `"Email is in use."`;
+
+exports[`index verify rejects invalid tokens 1`] = `"Your token could not be validated."`;

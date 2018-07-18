@@ -9,7 +9,6 @@
     "jsx": "react",
     "moduleResolution": "node",
     "forceConsistentCasingInFileNames": true,
-    "strict": true,
     "noUnusedLocals": true
   },
   "exclude": [

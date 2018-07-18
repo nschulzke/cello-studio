@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CredentialsRaw } from '../domain/types';
+import { CredentialsRaw } from 'domain/types';
 import { Callback, onChangeInput } from 'app/shared/modules/helpers';
 import './RegisterView.css';
 

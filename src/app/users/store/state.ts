@@ -1,4 +1,4 @@
-import { Permissions, Profile } from '../domain/types';
+import { Profile, Permissions } from 'domain/types';
 
 export interface UsersState {
   token: string | null;

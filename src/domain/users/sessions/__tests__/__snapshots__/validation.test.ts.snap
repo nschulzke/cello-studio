@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`validation emailIsValid rejects an invalid email address 1`] = `"Email is invalid."`;

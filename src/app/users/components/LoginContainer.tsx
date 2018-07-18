@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Callback } from 'app/shared/modules/helpers';
-import { CredentialsRaw } from '../domain/types';
+import { CredentialsRaw } from 'domain/types';
 import LoginView from './LoginView';
 
 interface State {

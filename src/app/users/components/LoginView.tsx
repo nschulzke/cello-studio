@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Callback, onChangeInput } from 'app/shared/modules/helpers';
-import { CredentialsRaw } from '../domain/types';
+import { CredentialsRaw } from 'domain/types';
 import './LoginView.css';
 
 interface Props {

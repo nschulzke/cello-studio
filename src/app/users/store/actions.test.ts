@@ -1,6 +1,6 @@
 import * as actions from './actions';
-import { Permissions, ContactType } from '../domain/types';
-import { LoginResponse } from '../routes/types';
+import { LoginResponse } from 'server/types';
+import { ContactType, Permissions } from 'domain/types';
 
 const RESPONSE: LoginResponse = {
   email: 'test@test.com',
