@@ -32,6 +32,15 @@ export const updateProfileRequest = (email: string, profile: Partial<Profile>): 
       });
   }
 
+export const updateProfileOtherRequest = (email: string, profile: Partial<Profile>): AsyncAction<StoreState, ProfileUpdatedAction> =>
+  (dispatch, getState) => {
+    axios.post<UpdateProfileResponse>('/api/users/profile/' + email, { email, profile })
+      .then((res) => {
+        dispatch(profileUpdated({ profile: res.data.profile }))
+      }).catch(err => {
+        alert(err.response.data);
+      });
+  }
 export const profileUpdated = (response: UpdateProfileResponse): ProfileUpdatedAction => ({
   type: ActionTypes.PROFILE_UPDATED,
   ...response,

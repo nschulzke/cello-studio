@@ -4,6 +4,7 @@ import { ContactType } from 'domain/types';
 const RESPONSE = {
   profile: {
     name: '',
+    email: '',
     parentName: '',
     contactEmail: '',
     contactPhone: '',

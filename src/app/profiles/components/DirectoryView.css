@@ -1,0 +1,13 @@
+.DirectoryView table {
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 1em;
+}
+
+.DirectoryView thead {
+  font-weight: bold;
+}
+
+.DirectoryView thead td {
+  border-bottom: 1px solid black;
+}

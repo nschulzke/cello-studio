@@ -36,7 +36,7 @@ app.use(async (req, res) => {
   } else if (req.path === '/login') {
     res.render('login', { redirect: req.query.redirect });
   } else {
-    res.render('index', { initialData: req.cookies.initialData });
+    res.render('index', { initialData: req.cookies.auth });
   }
 });
 

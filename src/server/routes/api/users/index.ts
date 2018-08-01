@@ -43,8 +43,8 @@ const buildRouter = (users, invites) => {
   });
 
   router.post('/profile', checkPermissions(Permissions.STUDENT), (req: Request, res: Response) => {
-    if (UpdateProfileRequest.is(req.body) && req.body.email === req.cookies.auth.email) {
-      let result = users.updateProfile(req.body.email, req.body.profile)
+    if (UpdateProfileRequest.is(req.body)) {
+      let result = users.updateProfile(req.cookies.auth.email, req.body.profile)
       if (result.success) {
         respond<UpdateProfileResponse>(res, { profile: result.data });
       } else {
@@ -59,6 +59,28 @@ const buildRouter = (users, invites) => {
     let result = users.getProfile(req.cookies.auth.email);
     if (result.success) {
       res.status(200).send(result.data);
+    } else {
+      res.status(400).send('Bad request');
+    }
+  });
+
+  router.get('/profile/:email', checkPermissions(Permissions.ADMIN), (req: Request, res: Response) => {
+    let result = users.getProfile(req.params.email);
+    if (result.success) {
+      res.status(200).send(result.data);
+    } else {
+      res.status(400).send('Not found');
+    }
+  });
+
+  router.post('/profile/:email', checkPermissions(Permissions.ADMIN), (req: Request, res: Response) => {
+    if (UpdateProfileRequest.is(req.body) && req.params.email) {
+      let result = users.updateProfile(req.body.email, req.body.profile)
+      if (result.success) {
+        respond<UpdateProfileResponse>(res, { profile: result.data });
+      } else {
+        res.status(400).send(result.data);
+      }
     } else {
       res.status(400).send('Bad request');
     }

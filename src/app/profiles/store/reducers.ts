@@ -4,6 +4,7 @@ import { Profile } from "domain/types";
 
 export const profile: ReducerType<Profile> = (state = {
   name: '',
+  email: '',
   parentName: '',
   contactEmail: '',
   contactPhone: '',

@@ -19,10 +19,11 @@ export const prepareUsers = ({ credentials, tokens }) => ({
     )
   ),
 
-  login: (userIndex, { email, password }) =>
-    credentials.compare({ email, password }, userIndex[email])
+  login: (userIndex, { email, password }) => {
+    return credentials.compare({ email, password }, userIndex[email])
       ? Result.Success({ email, token: tokens.encode(email), permissions: userIndex[email].permissions })
-      : Result.Failure('Invalid email or password.'),
+      : Result.Failure('Invalid email or password.');
+  },
 
   fetchUser: (userIndex, token) => {
     let result = tokens.decode(token);

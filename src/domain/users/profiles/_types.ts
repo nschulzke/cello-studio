@@ -8,6 +8,7 @@ export enum ContactType {
 
 export interface Profile {
   name: string;
+  email: string;
   parentName: string;
   contactEmail: string;
   contactPhone: string;
