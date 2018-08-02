@@ -10,7 +10,7 @@ import { Directory } from "../profiles/components/Directory";
 import ProfileOther from "../profiles/components/ProfileOther";
 
 const home: SwitchLink = { path: '/', exact: true, component: Home }
-const profileOther: SwitchLink = { path: '/profile/:id', exact: true, component: ProfileOther }
+const profileOther: SwitchLink = { path: '/directory/:id', exact: true, component: ProfileOther }
 const sidebarLinks: Array<SidebarLink & SwitchLink> = [
   { path: '/calendar', icon: 'far fa-calendar-alt', label: 'Calendar', color: '#fea3aa', component: Calendar },
   { path: '/schedule', icon: 'far fa-clock', label: 'Schedule', color: '#f8b88b', component: Schedule },

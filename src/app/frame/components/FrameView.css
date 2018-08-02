@@ -22,6 +22,7 @@
 }
 
 .FrameView .workspace {
+  overflow: auto;
   flex: 1;
   padding: 2rem;
 }

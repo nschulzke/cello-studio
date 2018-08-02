@@ -17,23 +17,16 @@ class InlineEditContactType extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = { editing: false, value: this.props.value };
-    this.toggleEdit = this.toggleEdit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.cancel = this.cancel.bind(this);
   }
 
-  public cancel() {
-    this.setState({ editing: false, value: this.props.value });
-  }
-
-  public toggleEdit() {
+  public toggleEdit = () => {
     if (this.state.editing) {
       this.props.onChange(this.state.value);
     }
     this.setState({ editing: !this.state.editing });
   }
 
-  public handleChange(event: React.FormEvent<HTMLInputElement>) {
+  public handleChange = (event: React.FormEvent<HTMLInputElement>) => {
     if (event.currentTarget.checked) {
       this.setState({ value: (this.state.value | Number(event.currentTarget.value)) });
     } else {
@@ -48,7 +41,7 @@ class InlineEditContactType extends React.Component<Props, State> {
   public render() {
     return (
       <div className="InlineEditContactType">
-        <EditLabel onClick={this.toggleEdit} onCancel={this.cancel} editing={this.state.editing}>Preferred contact</EditLabel>
+        <EditLabel onClick={this.toggleEdit} editing={this.state.editing}>Preferred contact</EditLabel>
         <div className="flex">
           <label>
             <input type="checkbox" disabled={!this.state.editing}

@@ -26,7 +26,6 @@ const DirectoryView: React.SFC<Props> = ({ profiles, permissions }) => (
       </thead>
       <tbody>
         {profiles.map(profile => {
-          console.log(permissions);
           let contactArray = [];
           if (profile.contactType & ContactType.EMAIL) {
             contactArray.push('Email');
@@ -47,17 +46,17 @@ const DirectoryView: React.SFC<Props> = ({ profiles, permissions }) => (
                 {profile.name}
               </td>
               <td>
-                {profile.contactEmail}
+                <a href={`mailto:${profile.contactEmail}`} target="_blank">{profile.contactEmail}</a>
               </td>
               <td>
-                {profile.contactPhone}
+                <a href={`tel:${profile.contactPhone}`} target="_blank">{profile.contactPhone}</a>
               </td>
               <td>
                 {contactText}
               </td>
               {permissions === Permissions.ADMIN ? (
                 <td>
-                  <NavLink to={`/profile/${profile.email}`}><i className="far fa-edit" /></NavLink>
+                  <NavLink to={`/directory/${profile.email}`}><i className="far fa-edit" /></NavLink>
                 </td>
               ) : undefined}
             </tr>
